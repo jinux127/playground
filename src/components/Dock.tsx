@@ -9,67 +9,60 @@ import {
   icon_trash,
   icon_vscode,
 } from '../assets/images';
-import Icon from './atoms/Icon';
+import IconWithTooltip from './molecules/IconWithTooltip';
 
 const Dock = () => {
   return (
     <Wrapper>
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_finder}
         height={70}
         width={70}
         margin={'0 5px'}
-        tooltipMargin={'0px'}
-        tooltip={'Finder'}
+        content={'Finder'}
       />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_launchpad}
         height={70}
         width={70}
         margin={'0 5px'}
-        tooltipMargin={'0px'}
-        tooltip={'Launchpad'}
+        content={'Launchpad'}
       />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_chrome}
         height={70}
         width={70}
         margin={'0 5px'}
-        tooltipMargin={'0px'}
-        tooltip={'Chrome'}
+        content={'Chrome'}
       />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_memo}
         height={60}
         width={60}
         margin={'5px'}
-        tooltipMargin={'5px'}
-        tooltip={'메모'}
+        content={'메모'}
       />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_message}
         height={60}
         width={60}
         margin={'5px'}
-        tooltipMargin={'5px'}
-        tooltip={'메모'}
+        content={'메시지'}
       />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_vscode}
         height={70}
         width={70}
         margin={'0 5px'}
-        tooltipMargin={'0px'}
-        tooltip={'Visual Studio Code'}
+        content={'Visual Studio Code'}
       />
       <Line />
-      <Icon
+      <IconWithTooltip
         backgroundImage={icon_trash}
         height={70}
         width={70}
         margin={'0 5px'}
-        tooltipMargin={'0px'}
-        tooltip={'휴지통'}
+        content={'휴지통'}
       />
     </Wrapper>
   );

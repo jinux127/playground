@@ -1,4 +1,4 @@
 import Line from './Line';
 import Icon from './Icon';
-
-export { Icon, Line };
+import Tooltip from './Tooltip';
+export { Icon, Line, Tooltip };

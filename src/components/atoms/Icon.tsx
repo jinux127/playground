@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 
-type CssProps = {
+export type IconProps = {
   backgroundImage: string;
   width: number;
   height: number;
   margin: string;
-  tooltipMargin?: string;
-  tooltip?: string;
 };
 
-const Icon = (props: CssProps) => {
+const Icon = (props: IconProps) => {
   return <Wrapper {...props}></Wrapper>;
 };
 
-const Wrapper = styled.div<CssProps>`
+const Wrapper = styled.div<IconProps>`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
   margin: ${props => props.margin};
