@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Line } from './atoms';
+import { Line } from '../atoms';
 import {
   icon_chrome,
   icon_finder,
@@ -8,8 +8,8 @@ import {
   icon_message,
   icon_trash,
   icon_vscode,
-} from '../assets/images';
-import IconWithTooltip from './molecules/IconWithTooltip';
+} from '../../assets/images';
+import IconWithTooltip from '../molecules/IconWithTooltip';
 
 const Dock = () => {
   return (

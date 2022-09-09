@@ -5,6 +5,7 @@ export type IconProps = {
   width: number;
   height: number;
   margin: string;
+  hover?: boolean;
 };
 
 const Icon = (props: IconProps) => {
