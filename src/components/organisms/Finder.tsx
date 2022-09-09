@@ -1,11 +1,21 @@
 import styled from 'styled-components';
-import FinderFooter from '../molecules/FinderFooter';
-import FinderHeader from '../molecules/FinderHeader';
+import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
+import { IFinderContent } from '../molecules/FinderContent';
+
+const content: IFinderContent[] = [
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+];
 
 const Finder = () => {
   return (
     <Wrapper>
       <FinderHeader />
+      <FinderContent FinderContents={content} />
       <FinderFooter />
     </Wrapper>
   );
@@ -19,7 +29,7 @@ const Wrapper = styled.div`
   border-radius: 12px;
   background-color: rgb(31, 31, 31);
   top: 5%;
-  left: 5%; ;
+  left: 5%;
 `;
 
 export default Finder;
