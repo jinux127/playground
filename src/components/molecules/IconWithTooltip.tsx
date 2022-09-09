@@ -19,6 +19,7 @@ const IconWithTooltip = (props: IconWithTooltipProps) => {
 const Wrapper = styled.div`
   position: relative;
   text-align: center;
+  cursor: pointer;
 `;
 const ToolTipWrapper = styled.div`
   display: none;

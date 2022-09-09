@@ -48,7 +48,7 @@ const TableThead = styled.thead`
   margin: 0;
   tr {
     th {
-      background-color: #3d3d3d;
+      background-color: rgba(0, 0, 0, 0.2);
       padding-left: 12px;
       position: sticky;
       top: 0;
@@ -62,8 +62,12 @@ const Table = styled.table`
   margin: 0;
   tbody {
     tr:nth-child(2n + 1) {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.2);
     }
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    cursor: pointer;
   }
 `;
 

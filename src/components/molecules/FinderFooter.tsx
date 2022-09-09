@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0%;
-  background-color: #575757;
+  background-color: #2e2e2e;
 `;
 
 export default FinderFooter;

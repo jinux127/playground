@@ -9,8 +9,9 @@ import icon_menu_hamburger from './icon_menu_hamburger.png';
 import icon_menu_square from './icon_menu_square.png';
 import icon_sort from './icon_sort.png';
 import icon_search from './icon_search.png';
-
+import logo_boot_apple from './logo_boot_apple.png';
 export {
+  logo_boot_apple,
   icon_chrome,
   icon_finder,
   icon_launchpad,

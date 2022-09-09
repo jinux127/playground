@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   color: #fff;
   width: 100%;
   top: 0%;
-  background-color: #575757;
+  background-color: #2e2e2e;
 `;
 
 export default FinderHeader;

@@ -26,6 +26,7 @@ const IconWrapper = styled.div`
   left: 23vw;
 
   border-radius: 5px;
+  cursor: pointer;
   :hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
