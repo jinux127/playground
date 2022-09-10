@@ -1,4 +1,4 @@
-import { Theme } from '../styles/theme';
+import { Theme } from './src/styles/theme';
 import { CSSProp, CSSObject } from 'styled-components';
 
 declare module 'styled-components' {
@@ -11,3 +11,7 @@ declare module 'react' {
     css?: CSSProp | CSSObject;
   }
 }
+
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';

@@ -1,4 +1,4 @@
-import media from '../types/media';
+import media from './media';
 
 const color = {
   white: 'white',

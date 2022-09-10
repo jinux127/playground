@@ -16,5 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  // Build ver.
+  "include": ["client/src"]
+  // Dev ver.
+  // "include": ["src"]
 }
