@@ -12,7 +12,7 @@ import {
   icon_vscode,
 } from '../../assets/images';
 import IconWithTooltip from '../molecules/IconWithTooltip';
-import { keys } from '../constants/keys';
+import { keys } from '../../constants/keys';
 
 type DockProps = {
   handleViewList: (key: string) => void;
@@ -87,11 +87,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.2rem;
+  padding: 5px;
   border-radius: 20px;
   position: absolute;
   bottom: 0%;
-  margin: 0.5rem;
+  margin: 8px;
   left: 50%;
   transform: translate(-50%, 0%);
   background-color: rgba(120, 120, 120, 0.1);

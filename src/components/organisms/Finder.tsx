@@ -21,7 +21,7 @@ export type FinderProps = {
 const Finder = ({ closeEvent, ...props }: FinderProps) => {
   return (
     <Wrapper {...props}>
-      <FinderHeader {...props} redClick={closeEvent} />
+      <FinderHeader {...props} redClick={closeEvent} title={'글 목록'} />
       <FinderContent FinderContents={content} />
       <FinderFooter />
     </Wrapper>

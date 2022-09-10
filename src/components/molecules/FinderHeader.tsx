@@ -6,15 +6,16 @@ import ThreeDot from './ThreeDot';
 
 type FinderHeaderProps = {
   redClick: () => void;
+  title: string;
 };
 
-const FinderHeader = ({ redClick }: FinderHeaderProps) => {
+const FinderHeader = ({ redClick, title, ...props }: FinderHeaderProps) => {
   return (
     <Wrapper>
       <LeftWapper>
         <ThreeDot redClick={redClick} />
         <LRArrow />
-        <span>글 목록</span>
+        <span>{title}</span>
       </LeftWapper>
       <RightWrapper>
         <FinderMenu />

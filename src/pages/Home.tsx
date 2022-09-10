@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { keys } from '../components/constants/keys';
+import { keys } from '../constants/keys';
 import Dock from '../components/organisms/Dock';
 import Finder from '../components/organisms/Finder';
 import Trash from '../components/organisms/Trash';

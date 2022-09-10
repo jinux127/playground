@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'MICEGothic',sans-serif;
     margin: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
   }
 
   a {
