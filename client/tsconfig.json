@@ -18,8 +18,8 @@
     "typeRoots": ["src/@types", "./node_modules/@types"]
   },
   // Build ver.
-  "include": ["./src/"]
+  "include": ["../client/src/"]
 
   // Dev ver.
-  // "include": ["src"]
+  // "include": ["./src/"]
 }
