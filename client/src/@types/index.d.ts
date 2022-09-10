@@ -1,4 +1,4 @@
-import { Theme } from '../src/styles/theme';
+import { Theme } from '../styles/theme';
 import { CSSProp, CSSObject } from 'styled-components';
 
 declare module 'styled-components' {
