@@ -11,3 +11,5 @@ declare module 'react' {
     css?: CSSProp | CSSObject;
   }
 }
+
+declare module 'styled-components';
