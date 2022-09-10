@@ -11,6 +11,7 @@ import icon_sort from './icon_sort.png';
 import icon_search from './icon_search.png';
 import logo_boot_apple from './logo_boot_apple.png';
 import background from './background.jpeg';
+
 export {
   background,
   logo_boot_apple,
