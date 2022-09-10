@@ -3,12 +3,9 @@ import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
 import { IFinderContent } from '../molecules/FinderContent';
 
 const content: IFinderContent[] = [
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
+  { name: '나태', time: '2020-02-02', category: '테스트' },
+  { name: '시기', time: '2020-02-02', category: '테스트' },
+  { name: '질투', time: '2020-02-02', category: '테스트' },
 ];
 
 export type FinderProps = {
@@ -18,7 +15,7 @@ export type FinderProps = {
   closeEvent: () => void;
 };
 
-const Finder = ({ closeEvent, ...props }: FinderProps) => {
+const Trash = ({ closeEvent, ...props }: FinderProps) => {
   return (
     <Wrapper {...props}>
       <FinderHeader {...props} redClick={closeEvent} />
@@ -41,4 +38,4 @@ const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
   display: ${props => (props.zIndex < 0 ? 'none' : 'block')};
 `;
 
-export default Finder;
+export default Trash;

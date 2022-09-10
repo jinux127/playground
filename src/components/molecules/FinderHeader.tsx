@@ -4,11 +4,15 @@ import FinderMenu from './FinderMenu';
 import LRArrow from './LRArrow';
 import ThreeDot from './ThreeDot';
 
-const FinderHeader = () => {
+type FinderHeaderProps = {
+  redClick: () => void;
+};
+
+const FinderHeader = ({ redClick }: FinderHeaderProps) => {
   return (
     <Wrapper>
       <LeftWapper>
-        <ThreeDot />
+        <ThreeDot redClick={redClick} />
         <LRArrow />
         <span>글 목록</span>
       </LeftWapper>

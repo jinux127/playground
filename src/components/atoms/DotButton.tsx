@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type DotButtonProps = {
   backgroundColor: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const DotButton = (props: DotButtonProps) => {

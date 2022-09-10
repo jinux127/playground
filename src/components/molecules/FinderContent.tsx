@@ -60,6 +60,7 @@ const Table = styled.table`
   text-align: left;
   border: none;
   margin: 0;
+
   tbody {
     tr:nth-child(2n + 1) {
       background-color: rgba(0, 0, 0, 0.2);
@@ -72,7 +73,7 @@ const Table = styled.table`
 `;
 
 const Wrapper = styled.div`
-  height: 255px;
+  height: 35vh;
   overflow: auto;
 `;
 

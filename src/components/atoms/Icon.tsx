@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export type IconProps = {
@@ -6,6 +7,7 @@ export type IconProps = {
   height: number;
   margin: string;
   hover?: boolean;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const Icon = (props: IconProps) => {

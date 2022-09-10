@@ -1,3 +1,5 @@
+import React from 'react';
+
 import styled from 'styled-components';
 import { Line } from '../atoms';
 import {
@@ -10,8 +12,14 @@ import {
   icon_vscode,
 } from '../../assets/images';
 import IconWithTooltip from '../molecules/IconWithTooltip';
+import { keys } from '../constants/keys';
 
-const Dock = () => {
+type DockProps = {
+  handleViewList: (key: string) => void;
+};
+
+const Dock = (props: DockProps) => {
+  const { handleViewList } = props;
   return (
     <Wrapper>
       <IconWithTooltip
@@ -20,6 +28,7 @@ const Dock = () => {
         width={70}
         margin={'0 5px'}
         content={'Finder'}
+        onClick={() => handleViewList(keys.Finder)}
       />
       <IconWithTooltip
         backgroundImage={icon_launchpad}
@@ -27,6 +36,7 @@ const Dock = () => {
         width={70}
         margin={'0 5px'}
         content={'Launchpad'}
+        onClick={() => handleViewList(keys.Launchpad)}
       />
       <IconWithTooltip
         backgroundImage={icon_chrome}
@@ -34,6 +44,7 @@ const Dock = () => {
         width={70}
         margin={'0 5px'}
         content={'Chrome'}
+        onClick={() => handleViewList(keys.Chrome)}
       />
       <IconWithTooltip
         backgroundImage={icon_memo}
@@ -41,6 +52,7 @@ const Dock = () => {
         width={60}
         margin={'5px'}
         content={'메모'}
+        onClick={() => handleViewList(keys.Memo)}
       />
       <IconWithTooltip
         backgroundImage={icon_message}
@@ -48,6 +60,7 @@ const Dock = () => {
         width={60}
         margin={'5px'}
         content={'메시지'}
+        onClick={() => handleViewList(keys.Message)}
       />
       <IconWithTooltip
         backgroundImage={icon_vscode}
@@ -55,6 +68,7 @@ const Dock = () => {
         width={70}
         margin={'0 5px'}
         content={'Visual Studio Code'}
+        onClick={() => handleViewList(keys.Vscode)}
       />
       <Line />
       <IconWithTooltip
@@ -63,6 +77,7 @@ const Dock = () => {
         width={70}
         margin={'0 5px'}
         content={'휴지통'}
+        onClick={() => handleViewList(keys.Trash)}
       />
     </Wrapper>
   );
