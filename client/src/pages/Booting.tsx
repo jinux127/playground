@@ -1,8 +1,19 @@
+import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { logo_boot_apple } from '../assets/images';
 import { ProgressBar } from '../components/atoms';
+import {
+  icon_chrome,
+  icon_finder,
+  icon_launchpad,
+  icon_memo,
+  icon_message,
+  icon_trash,
+  icon_vscode,
+  background,
+} from '../assets/images';
 
 type LogoProps = {
   src: string;
@@ -11,10 +22,42 @@ type LogoProps = {
 const Booting = () => {
   const navigate = useNavigate();
   const [count, setCount] = useState(10);
+  const [limitCount, setLimitCount] = useState(0);
   const countInterval = useRef<any>(null);
+  let images: HTMLImageElement[] = [];
+
+  function preload(preload: string | any[]) {
+    for (let i = 0; i < preload.length; i++) {
+      images[i] = new Image();
+      images[i].src = preload[i];
+      images[i].onload = () => {
+        setCount(old => old + 5);
+      };
+    }
+  }
 
   useEffect(() => {
-    countInterval.current = setInterval(() => setCount(old => old + 1), 15);
+    // eslint-disable-next-line no-console
+    console.log(count);
+  }, [count]);
+
+  useEffect(() => {
+    preload([
+      icon_chrome,
+      icon_finder,
+      icon_launchpad,
+      icon_memo,
+      icon_message,
+      icon_trash,
+      icon_vscode,
+      background,
+    ]);
+    countInterval.current = setInterval(() => {
+      if (limitCount < 10) {
+        setLimitCount(limitCount => limitCount + 1);
+        setCount(old => old + 1);
+      }
+    }, 200);
     return () => {
       clearInterval(countInterval.current);
     };

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type ProgressBardProps = {
@@ -28,9 +29,9 @@ const FillerStyles = styled.div<{ completed: number; bgColor: string }>`
   border-radius: 10px;
   width: ${props => props.completed}%;
   background-color: ${props => props.bgColor};
-  border-radius: 'inherit';
-  text-align: 'right';
-  transition: 'width 1s ease-in-out';
+  border-radius: inherit;
+  text-align: right;
+  transition: width 0.2s ease-in-out;
 `;
 
 export default ProgressBar;

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Icon, Tooltip } from '../atoms';
 import { IconProps } from '../atoms/Icon';

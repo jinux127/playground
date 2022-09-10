@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { icon_menu_hamburger, icon_menu_square, icon_search, icon_sort } from '../../assets/images';
 import { Icon } from '../atoms';

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
