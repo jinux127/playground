@@ -44,7 +44,7 @@ const TableThead = styled.thead`
   margin: 0;
   tr {
     th {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgb(18, 18, 18);
       padding-left: 12px;
       position: sticky;
       top: 0;
