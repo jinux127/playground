@@ -31,7 +31,7 @@ const Booting = () => {
       images[i] = new Image();
       images[i].src = preload[i];
       images[i].onload = () => {
-        setCount(old => old + 5);
+        setCount(old => old + 10);
       };
     }
   }
