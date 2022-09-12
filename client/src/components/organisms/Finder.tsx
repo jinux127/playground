@@ -1,30 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IFinder } from '../../types/interface';
 
 import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
-import { IFinderContent } from '../molecules/FinderContent';
-
-const content: IFinderContent[] = [
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-  { name: '블라블라', time: '2020-02-02', category: '테스트' },
-];
 
 export type FinderProps = {
   zIndex: number;
   top?: number;
   left?: number;
   closeEvent: () => void;
+  finderData: IFinder[];
 };
 
-const Finder = ({ closeEvent, ...props }: FinderProps) => {
+const Finder = ({ closeEvent, finderData = [], ...props }: FinderProps) => {
   return (
     <Wrapper {...props}>
       <FinderHeader {...props} redClick={closeEvent} title={'글 목록'} />
-      <FinderContent FinderContents={content} />
+      {finderData ? <FinderContent FinderContents={finderData} /> : ''}
       <FinderFooter />
     </Wrapper>
   );

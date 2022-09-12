@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IFinder } from '../../types/interface';
 import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
-import { IFinderContent } from '../molecules/FinderContent';
 
-const content: IFinderContent[] = [
-  { name: '나태', time: '2020-02-02', category: '테스트' },
-  { name: '시기', time: '2020-02-02', category: '테스트' },
-  { name: '질투', time: '2020-02-02', category: '테스트' },
+const content: IFinder[] = [
+  { title: '나태', date: '2020-02-02', desc: '테스트', href: '', likes: '' },
+  { title: '시기', date: '2020-02-02', desc: '테스트', href: '', likes: '' },
+  { title: '질투', date: '2020-02-02', desc: '테스트', href: '', likes: '' },
 ];
 
 export type FinderProps = {
@@ -14,6 +14,7 @@ export type FinderProps = {
   top?: number;
   left?: number;
   closeEvent: () => void;
+  finderData: IFinder[];
 };
 
 const Trash = ({ closeEvent, ...props }: FinderProps) => {

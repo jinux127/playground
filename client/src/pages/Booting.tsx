@@ -37,11 +37,6 @@ const Booting = () => {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(count);
-  }, [count]);
-
-  useEffect(() => {
     preload([
       icon_chrome,
       icon_finder,
@@ -52,12 +47,14 @@ const Booting = () => {
       icon_vscode,
       background,
     ]);
+
     countInterval.current = setInterval(() => {
       if (limitCount < 10) {
         setLimitCount(limitCount => limitCount + 1);
         setCount(old => old + 1);
       }
     }, 200);
+
     return () => {
       clearInterval(countInterval.current);
     };

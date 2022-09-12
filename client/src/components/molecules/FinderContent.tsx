@@ -1,14 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-
-export interface IFinderContent {
-  name: string;
-  category: string;
-  time: string;
-}
+import { IFinder } from '../../types/interface';
 
 export interface IFinderContentProps {
-  FinderContents: IFinderContent[];
+  FinderContents: IFinder[];
 }
 
 const FinderContent = (props: IFinderContentProps) => {
@@ -33,9 +28,9 @@ const FinderContent = (props: IFinderContentProps) => {
           {FinderContents.map(content => {
             return (
               <tr>
-                <td>{content.name}</td>
-                <td>{content.category}</td>
-                <td>{content.time}</td>
+                <td>{content.title}</td>
+                <td>{content.desc}</td>
+                <td>{content.date}</td>
               </tr>
             );
           })}
