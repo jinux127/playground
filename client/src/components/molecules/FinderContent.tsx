@@ -27,7 +27,9 @@ const FinderContent = (props: IFinderContentProps) => {
         <tbody>
           {FinderContents.map(content => {
             return (
-              <tr>
+              // 임시 블로그로 이동하기
+              // todo : 새창으로 열기 경고창 혹은 iframe 같은 걸로 안에 창 띄우기
+              <tr onClick={() => (window.location.href = `${content.href}`)}>
                 <td>{content.title}</td>
                 <td>{content.desc}</td>
                 <td>{content.date}</td>

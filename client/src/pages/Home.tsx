@@ -5,8 +5,11 @@ import styled from 'styled-components';
 import { keys } from '../constants/keys';
 import Dock from '../components/organisms/Dock';
 import Finder from '../components/organisms/Finder';
-// import Trash from '../components/organisms/Trash';
 import { IFinder } from '../types/interface';
+import Memo from '../components/organisms/Memo';
+import DotButton from '../components/atoms/DotButton';
+
+// const sampleData = [{ title: '123' }];
 
 const Home = () => {
   const [viewList, setViewList] = useState<string[]>([]);
@@ -32,11 +35,6 @@ const Home = () => {
     getFinderData();
   }, []);
 
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(finderData);
-  }, [finderData]);
-
   return (
     <Wrapper>
       <Finder
@@ -46,13 +44,15 @@ const Home = () => {
         closeEvent={() => handleCloseView(keys.Finder)}
         finderData={finderData || []}
       />
-      {/* <Trash
-        zIndex={viewList.indexOf(keys.Trash)}
+      <Memo
+        zIndex={viewList.indexOf(keys.Memo)}
         top={5}
         left={5}
-        closeEvent={() => handleCloseView(keys.Trash)}
-        finderData={finderData || []}
-      /> */}
+        closeEvent={() => handleCloseView(keys.Memo)}
+        MemoContents={[
+          { date: '2020년9월1일', content: <DotButton backgroundColor="red" />, title: '테스트' },
+        ]}
+      />
       <Dock handleViewList={handleViewList} />
     </Wrapper>
   );
