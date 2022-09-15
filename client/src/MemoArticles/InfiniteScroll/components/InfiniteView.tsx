@@ -32,10 +32,11 @@ const InfiniteView = () => {
 
   return (
     <Wrapper>
-      {photos ? photos.map(photo => <img src={photo.urls.raw} alt={photo.description} />) : null}
+      {photos
+        ? photos.map(photo => <img key={photo.id} src={photo.urls.raw} alt={photo.description} />)
+        : null}
 
-      {loading && <Loading />}
-      <Target ref={ref} />
+      {loading ? <Loading /> : <Target ref={ref} />}
     </Wrapper>
   );
 };

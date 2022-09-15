@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
 import { IMemo } from '../../types/interface';
 
@@ -14,23 +14,25 @@ const MemoContent = (props: IMemoContentProps) => {
     setContentIndex(i);
   };
 
+  const nullCheck = contentIndex !== null && MemoContents[contentIndex] !== null;
+
   return (
     <Wrapper>
       <List>
         <ul>
           {MemoContents.map((content, i) => (
-            <>
+            <Fragment key={i}>
               <ListItem onClick={() => handleSelect(i)} index={i} contentIndex={contentIndex}>
                 <div>
                   <Title>{content.title}</Title>
                   <Date>{content.date}</Date>
                 </div>
               </ListItem>
-            </>
+            </Fragment>
           ))}
         </ul>
       </List>
-      <Content>{contentIndex !== null ? MemoContents[contentIndex].content : ''}</Content>
+      <Content>{nullCheck ? MemoContents[contentIndex].content : ''}</Content>
     </Wrapper>
   );
 };
