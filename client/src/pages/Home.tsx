@@ -7,7 +7,8 @@ import Dock from '../components/organisms/Dock';
 import Finder from '../components/organisms/Finder';
 import { IFinder } from '../types/interface';
 import Memo from '../components/organisms/Memo';
-import DotButton from '../components/atoms/DotButton';
+
+import MemoArticles from '../MemoArticles';
 
 // const sampleData = [{ title: '123' }];
 
@@ -49,9 +50,7 @@ const Home = () => {
         top={5}
         left={5}
         closeEvent={() => handleCloseView(keys.Memo)}
-        MemoContents={[
-          { date: '2020년9월1일', content: <DotButton backgroundColor="red" />, title: '테스트' },
-        ]}
+        MemoContents={MemoArticles}
       />
       <Dock handleViewList={handleViewList} />
     </Wrapper>

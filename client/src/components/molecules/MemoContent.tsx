@@ -20,25 +20,12 @@ const MemoContent = (props: IMemoContentProps) => {
         <ul>
           {MemoContents.map((content, i) => (
             <>
-              <li onClick={() => handleSelect(i)}>{content.title}여기</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
-              <li>{content.title}</li>
+              <ListItem onClick={() => handleSelect(i)} index={i} contentIndex={contentIndex}>
+                <div>
+                  <Title>{content.title}</Title>
+                  <Date>{content.date}</Date>
+                </div>
+              </ListItem>
             </>
           ))}
         </ul>
@@ -47,24 +34,38 @@ const MemoContent = (props: IMemoContentProps) => {
     </Wrapper>
   );
 };
+
+const Title = styled.div`
+  font-size: 0.9rem;
+`;
+const Date = styled.div`
+  font-size: 0.5rem;
+`;
+
+const ListItem = styled.li<{ index: number; contentIndex: number | null }>`
+  background-color: ${props =>
+    props.index === props.contentIndex ? ` rgba(255,255,255,0.1)` : ''};
+  border-radius: 7px;
+  padding: 1rem;
+  border-bottom: 0.1px solid rgba(173, 173, 173, 0.1);
+`;
+
 const Content = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-
-  margin: 1rem;
+  overflow: scroll;
 `;
 const List = styled.div`
-  width: 30%;
+  width: 40%;
   overflow: auto;
   background-color: #333333;
   height: 100%;
   border-radius: 0px 0px 0px 12px;
+
   ul {
-    li {
-      padding-bottom: 1rem;
-    }
+    padding: 0 0.5rem;
   }
 `;
 
