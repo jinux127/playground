@@ -29,8 +29,6 @@ const Home = () => {
     const res = await fetch('api/data');
     const json = await res.json();
     const finderData = json.data;
-    // eslint-disable-next-line no-console
-    console.log(finderData);
     setFinderData(finderData);
   };
 
