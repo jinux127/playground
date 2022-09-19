@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { keys } from '../constants/keys';
 import Dock from '../components/organisms/Dock';
@@ -9,6 +9,7 @@ import { IFinder } from '../types/interface';
 import Memo from '../components/organisms/Memo';
 
 import MemoArticles from '../MemoArticles';
+import useInterval from '../hooks/useInterval';
 
 // const sampleData = [{ title: '123' }];
 
@@ -32,9 +33,9 @@ const Home = () => {
     setFinderData(finderData);
   };
 
-  useEffect(() => {
-    getFinderData();
-  }, []);
+  useInterval(() => {
+    if (!finderData.length) getFinderData();
+  }, 1000);
 
   return (
     <Wrapper>

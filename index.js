@@ -20,8 +20,10 @@ class DomesticCrawler {
     const url = '/';
     const resp = await this.client.get(url);
     const $ = cheerio.load(resp.data);
-    //  .sc-jvvksu kRCqQL
-    const textArray = $('div.sc-gIBqdA.oYdaI')
+
+    const textArray = $('.tags-wrapper');
+
+    const resultArr = textArray
       .map((idx, el) => {
         const form = {
           title: '',
@@ -30,16 +32,17 @@ class DomesticCrawler {
           date: '',
           likes: '',
         };
-
-        form['title'] = String($(el).find('h2').text());
-        form['href'] = this.baseURL + String($(el).find('a:nth-of-type(1)').attr('href'));
-        form['desc'] = String($(el).find('p').text());
-        form['date'] = String($(el).find('div.subinfo span:nth-of-type(1)').text());
-        form['likes'] = String($(el).find('.likes').text());
+        const parentNode = $(el).parent();
+        // console.log(parentNode.text());
+        form['title'] = String(parentNode.children().eq(1).text());
+        form['href'] = this.baseURL + String(parentNode.children().eq(1).attr('href'));
+        form['desc'] = String(parentNode.children().eq(2).text());
+        form['date'] = String(parentNode.find('div.subinfo span:nth-of-type(1)').text());
+        form['likes'] = String(parentNode.find('.likes').text());
         return form;
       })
       .toArray();
-    return textArray;
+    return resultArr;
   }
 }
 // 미들웨어 함수를 특정 경로에 등록
@@ -47,9 +50,10 @@ app.use('/api/data', async function (req, res) {
   try {
     const crawler = new DomesticCrawler();
     const data = await crawler.crawlStart();
+
     res.json({ data, status: 200 });
   } catch (e) {
-    console.log('crawStart failed', e);
+    console.log('crawStart failed');
     res.json({ status: 405 });
   }
 });
