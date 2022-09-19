@@ -10,15 +10,28 @@ import Memo from '../components/organisms/Memo';
 
 import MemoArticles from '../MemoArticles';
 import useInterval from '../hooks/useInterval';
+import Launchpad from '../components/organisms/Launchpad';
 
 // const sampleData = [{ title: '123' }];
+const LAUNCHPAD = keys.Launchpad;
 
 const Home = () => {
   const [viewList, setViewList] = useState<string[]>([]);
   const [finderData, setFinderData] = useState<IFinder[]>([]);
   const handleViewList = (key: string) => {
     const newViewList = viewList.filter(view => view !== key);
-    setViewList([...newViewList, key]);
+
+    const isViewLaunchpadAndClickLaunchpad = viewList.includes(LAUNCHPAD) && key === LAUNCHPAD;
+    const isViewLaunchpadAndClickOther = viewList.includes(LAUNCHPAD) && key !== LAUNCHPAD;
+
+    if (isViewLaunchpadAndClickLaunchpad) {
+      setViewList([...newViewList]);
+    } else if (isViewLaunchpadAndClickOther) {
+      const newViewList = viewList.filter(view => view !== key && view !== LAUNCHPAD);
+      setViewList([...newViewList, key]);
+    } else {
+      setViewList([...newViewList, key]);
+    }
   };
 
   const handleCloseView = (key: string) => {
@@ -52,6 +65,12 @@ const Home = () => {
         left={5}
         closeEvent={() => handleCloseView(keys.Memo)}
         MemoContents={MemoArticles}
+      />
+      <Launchpad
+        zIndex={viewList.indexOf(keys.Launchpad)}
+        top={5}
+        left={5}
+        closeEvent={() => handleCloseView(keys.Launchpad)}
       />
       <Dock handleViewList={handleViewList} />
     </Wrapper>
