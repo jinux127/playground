@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { getPhotos, useUnsplashDispatch, useUnsplashState } from '../context/UnsplashContext';
 import { useIntersect } from '../hooks/useIntersect';
@@ -17,12 +16,9 @@ const InfiniteView = () => {
     setPage(cur => cur + 1);
   };
 
-  useEffect(() => {
-    fetchData(page, 4);
-  }, []);
-
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
+
     if (!loading) {
       fetchData(page, 4);
     }
@@ -33,13 +29,32 @@ const InfiniteView = () => {
   return (
     <Wrapper>
       {photos
-        ? photos.map(photo => <img key={photo.id} src={photo.urls.raw} alt={photo.description} />)
+        ? photos.map(photo => (
+            <ImageWrapper key={photo.id}>
+              <img src={photo.urls.raw} alt={photo.description} />
+            </ImageWrapper>
+          ))
         : null}
 
-      {loading ? <Loading /> : <Target ref={ref} />}
+      {loading ? (
+        <ImageWrapper>
+          <Loading />
+        </ImageWrapper>
+      ) : (
+        <Target ref={ref} />
+      )}
     </Wrapper>
   );
 };
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  img {
+    object-fit: contain;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;

@@ -14,6 +14,7 @@ import {
   icon_vscode,
   background,
 } from '../assets/images';
+import { preload } from '../utils';
 
 type LogoProps = {
   src: string;
@@ -24,29 +25,21 @@ const Booting = () => {
   const [count, setCount] = useState(10);
   const [limitCount, setLimitCount] = useState(0);
   const countInterval = useRef<any>(null);
-  let images: HTMLImageElement[] = [];
-
-  function preload(preload: string | any[]) {
-    for (let i = 0; i < preload.length; i++) {
-      images[i] = new Image();
-      images[i].src = preload[i];
-      images[i].onload = () => {
-        setCount(old => old + 10);
-      };
-    }
-  }
 
   useEffect(() => {
-    preload([
-      icon_chrome,
-      icon_finder,
-      icon_launchpad,
-      icon_memo,
-      icon_message,
-      icon_trash,
-      icon_vscode,
-      background,
-    ]);
+    preload(
+      [
+        icon_chrome,
+        icon_finder,
+        icon_launchpad,
+        icon_memo,
+        icon_message,
+        icon_trash,
+        icon_vscode,
+        background,
+      ],
+      () => setCount(old => old + 10)
+    );
 
     countInterval.current = setInterval(() => {
       if (limitCount < 10) {

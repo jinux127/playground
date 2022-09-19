@@ -38,6 +38,14 @@ const loadingState = {
   error: null,
 };
 
+// 로딩중일 때 바뀔 상태 객체
+const loadingState_inifinite = (prevState: any) => {
+  return {
+    ...prevState,
+    loading: true,
+  };
+};
+
 // 성공했을 때의 상태 만들어주는 함수
 const success = data => ({
   loading: false,
@@ -73,8 +81,10 @@ export function createAsyncHandler(type: string, key: string) {
     switch (action.type) {
       case type:
         if (type === 'GET_PHOTOS') {
+          const prevState = state[key];
           return {
             ...state,
+            [key]: loadingState_inifinite(prevState),
           };
         }
 
