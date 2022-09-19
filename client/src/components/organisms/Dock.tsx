@@ -96,6 +96,7 @@ const Wrapper = styled.div`
   transform: translate(-50%, 0%);
   background-color: rgba(120, 120, 120, 0.1);
   box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
 `;
 
 export default Dock;
