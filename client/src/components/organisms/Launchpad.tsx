@@ -1,36 +1,79 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { background } from '../../assets/images';
+import useInterval from '../../hooks/useInterval';
+import Carousel from '../atoms/Carousel';
 
 export type LaunchpadProps = {
   zIndex: number;
   top?: number;
   left?: number;
   closeEvent: () => void;
+  LaunchpadContents: any;
 };
 
-const Launchpad = ({ closeEvent, ...props }: LaunchpadProps) => {
+const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [count, setCount] = useState(1);
+  const [carouselList] = useState([]);
+
+  useInterval(() => {
+    count < carouselList.length ? setCount(cur => cur + 1) : setCount(1);
+  }, 200);
+
+  const handleCarousel = count => {
+    if (!carouselRef.current) return;
+
+    if (count === 5) {
+      carouselRef.current.style.transform = 'translateX(0)';
+    } else {
+      carouselRef.current.style.transform = `translateX(-${window.innerWidth * count}px)`;
+    }
+  };
+
   return (
     <Wrapper {...props}>
-      <Test>
-        <Test2>asdf</Test2>
-      </Test>
+      <CarouselWrapper>
+        <Carousel
+          carouselList={LaunchpadContents}
+          carouselRef={carouselRef}
+          count={count}
+          handleCarousel={handleCarousel}
+        />
+      </CarouselWrapper>
     </Wrapper>
   );
 };
-const Test = styled.div`
+const CarouselWrapper = styled.div`
   width: 100%;
   height: 90%;
-  display: flex;
+
   border: 1px solid;
-  justify-content: center;
-  align-items: center;
 `;
-const Test2 = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: aliceblue;
-`;
+
+const fadeOut = keyframes`
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.1);
+      display:none;
+    }
+    `;
+const fadeIn = keyframes`
+    from {
+      opacity: 0;
+      display: block;
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  `;
+
 const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
   display: flex;
   position: absolute;
@@ -40,15 +83,17 @@ const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: ${background};
-    backdrop-filter: blur(5px);
+    background-image: url(${background});
+    background-size: cover;
+    backdrop-filter: blur(2px);
     z-index: -1;
     content: '';
   }
+
+  animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.2s;
+  animation-fill-mode: forwards;
   width: 100vw;
   height: 100vh;
   z-index: ${props => props.zIndex};
-  display: ${props => (props.zIndex < 0 ? 'none' : 'block')};
 `;
-
 export default Launchpad;

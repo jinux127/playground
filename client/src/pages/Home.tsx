@@ -12,7 +12,38 @@ import MemoArticles from '../MemoArticles';
 import useInterval from '../hooks/useInterval';
 import Launchpad from '../components/organisms/Launchpad';
 
-// const sampleData = [{ title: '123' }];
+const sampleData = [
+  {
+    id: 1,
+    src: '../images/slide-img01.jpg',
+    text: '첫번째 슬라이드 버튼',
+    alt: '첫번째 슬라이드',
+  },
+  {
+    id: 2,
+    src: '../images/slide-img02.jpg',
+    text: '두번째 슬라이드 버튼',
+    alt: '두번째 슬라이드',
+  },
+  {
+    id: 3,
+    src: '../images/slide-img03.jpg',
+    text: '세번째 슬라이드 버튼',
+    alt: '세번째 슬라이드',
+  },
+  {
+    id: 4,
+    src: '../images/slide-img04.jpg',
+    text: '네번째 슬라이드 버튼',
+    alt: '네번째 슬라이드',
+  },
+  {
+    id: 5,
+    src: '../images/slide-img05.jpg',
+    text: '다섯번째 슬라이드 버튼',
+    alt: '다섯번째 슬라이드',
+  },
+];
 const LAUNCHPAD = keys.Launchpad;
 
 const Home = () => {
@@ -71,6 +102,7 @@ const Home = () => {
         top={5}
         left={5}
         closeEvent={() => handleCloseView(keys.Launchpad)}
+        LaunchpadContents={sampleData}
       />
       <Dock handleViewList={handleViewList} />
     </Wrapper>
