@@ -16,10 +16,11 @@ import { keys } from '../../constants/keys';
 
 type DockProps = {
   handleViewList: (key: string) => void;
+  setIsFirstLanding: any;
 };
 
 const Dock = (props: DockProps) => {
-  const { handleViewList } = props;
+  const { handleViewList, setIsFirstLanding } = props;
   return (
     <Wrapper>
       <IconWithTooltip
@@ -36,7 +37,10 @@ const Dock = (props: DockProps) => {
         width={70}
         margin={'0 5px'}
         content={'Launchpad'}
-        onClick={() => handleViewList(keys.Launchpad)}
+        onClick={() => {
+          handleViewList(keys.Launchpad);
+          setIsFirstLanding(cur => cur + 1);
+        }}
       />
       <IconWithTooltip
         backgroundImage={icon_chrome}

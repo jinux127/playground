@@ -10,6 +10,7 @@ export type LaunchpadProps = {
   left?: number;
   closeEvent: () => void;
   LaunchpadContents: any;
+  isFirstLanding: number;
 };
 
 const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) => {
@@ -74,9 +75,15 @@ const fadeIn = keyframes`
     }
   `;
 
-const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
+const Wrapper = styled.div<{
+  zIndex: number;
+  top?: number;
+  left?: number;
+  isFirstLanding: number;
+}>`
   display: flex;
   position: absolute;
+
   ::before {
     position: fixed;
     top: 0;
@@ -89,7 +96,7 @@ const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
     z-index: -1;
     content: '';
   }
-
+  /* display: ${props => (props.isFirstLanding > 1 ? '' : 'none')}; */
   animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.2s;
   animation-fill-mode: forwards;
   width: 100vw;

@@ -49,6 +49,8 @@ const LAUNCHPAD = keys.Launchpad;
 const Home = () => {
   const [viewList, setViewList] = useState<string[]>([]);
   const [finderData, setFinderData] = useState<IFinder[]>([]);
+  const [isFirstLanding, setIsFirstLanding] = useState(0);
+
   const handleViewList = (key: string) => {
     const newViewList = viewList.filter(view => view !== key);
 
@@ -97,14 +99,18 @@ const Home = () => {
         closeEvent={() => handleCloseView(keys.Memo)}
         MemoContents={MemoArticles}
       />
-      <Launchpad
-        zIndex={viewList.indexOf(keys.Launchpad)}
-        top={5}
-        left={5}
-        closeEvent={() => handleCloseView(keys.Launchpad)}
-        LaunchpadContents={sampleData}
-      />
-      <Dock handleViewList={handleViewList} />
+      {isFirstLanding >= 1 && (
+        <Launchpad
+          zIndex={viewList.indexOf(keys.Launchpad)}
+          top={5}
+          left={5}
+          closeEvent={() => handleCloseView(keys.Launchpad)}
+          LaunchpadContents={sampleData}
+          isFirstLanding={isFirstLanding}
+        />
+      )}
+
+      <Dock handleViewList={handleViewList} setIsFirstLanding={setIsFirstLanding} />
     </Wrapper>
   );
 };
