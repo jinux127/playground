@@ -1,19 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const Carousel = ({ count, carouselList, carouselRef, handleCarousel }) => {
+const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) => {
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
     marginLeft: `-${current}00%`,
   });
 
-  const imgSize = useRef(3);
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    document.onkeydown = isView ? e => console.log(e) : null;
+  }, [isView]);
+
+  const imgSize = useRef(4);
 
   const moveSlide = i => {
     let nextIndex = current + i;
 
     if (nextIndex < 0) nextIndex = imgSize.current - 1;
-    else if (nextIndex >= 3) nextIndex = 0;
+    else if (nextIndex >= 4) nextIndex = 0;
 
     setCurrent(nextIndex);
   };
@@ -35,24 +40,10 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel }) => {
         </div>
         <Window>
           <FlexBox style={style}>
-            <div
-              className="img"
-              style={{
-                backgroundImage: `url("https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black")`,
-              }}
-            ></div>
-            <div
-              className="img"
-              style={{
-                backgroundImage: `url("https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=React&logoColor=black")`,
-              }}
-            ></div>
-            <div
-              className="img"
-              style={{
-                backgroundImage: `url("https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white")`,
-              }}
-            ></div>
+            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}>tesgggt</CarouselItem>
+            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}>a</CarouselItem>
+            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>b</CarouselItem>
+            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>c</CarouselItem>
           </FlexBox>
         </Window>
         <div
@@ -73,6 +64,12 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel }) => {
     </Wrapper>
   );
 };
+const CarouselItem = styled.div`
+  width: 90vw;
+  height: 90vh;
+  border: 1px solid;
+  flex-shrink: 0;
+`;
 
 const Window = styled.div`
   width: 90vw;
@@ -86,16 +83,8 @@ const CarouselWrapper = styled.div`
 `;
 
 const FlexBox = styled.div`
+  transition: all 1s cubic-bezier(0.1, 0.2, 0.3, 1);
   display: flex;
-  width: 90vw;
-  .img {
-    width: 90vw;
-    height: 90vh;
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    flex: none;
-  }
 `;
 
 const Wrapper = styled.div`

@@ -38,9 +38,9 @@ apiRouter.post('/mail', async function (req, res, next) {
     subject: `${name ? name : '익명'}님에게 쪽지가 수신되었습니다.`,
     html: `
       <h3>보낸이:${email}</h3>
-    <div>
-              ${contents}
-          </div>`,
+      <div>
+        ${contents}
+      </div>`,
   };
 
   try {

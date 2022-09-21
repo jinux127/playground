@@ -40,6 +40,7 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
           carouselRef={carouselRef}
           count={count}
           handleCarousel={handleCarousel}
+          isView={!(props.zIndex < 0)}
         />
       </CarouselWrapper>
     </Wrapper>
