@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { INIT_MESSAGES } from '../../constants/messages';
+import { refScrollTop } from '../../utils';
 import RoundInput from '../atoms/RoundInput';
 
 import MessageContent from '../molecules/MessageContent';
@@ -14,17 +16,21 @@ export type MessageProps = {
 
 const Message = ({ closeEvent, ...props }: MessageProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [messages, setMessages] = useState(INIT_MESSAGES);
 
   const sendEmail = (text: string) => {
-    if (scrollRef === null || scrollRef.current === null) return;
-    scrollRef.current.scrollIntoView({ block: 'end', inline: 'nearest' });
+    setMessages(message => [...message, { text, isLeft: false }]);
   };
+
+  useEffect(() => {
+    refScrollTop(scrollRef);
+  }, [messages]);
 
   return (
     <Wrapper {...props}>
       <MessageHeader {...props} redClick={closeEvent} />
-      <ContentWrapper>
-        <MessageContent scrollRef={scrollRef} />
+      <ContentWrapper ref={scrollRef}>
+        <MessageContent messages={messages} />
       </ContentWrapper>
       <RoundInput onSubmit={sendEmail} />
     </Wrapper>
@@ -33,7 +39,7 @@ const Message = ({ closeEvent, ...props }: MessageProps) => {
 
 const ContentWrapper = styled.div`
   height: 100%;
-  overflow: auto;
+  overflow: scroll;
   padding: 2px;
 `;
 

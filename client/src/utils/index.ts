@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const preload = (preload: string | any[], callback: () => void) => {
   let images: HTMLImageElement[] = [];
 
@@ -5,9 +7,13 @@ export const preload = (preload: string | any[], callback: () => void) => {
     images[i] = new Image();
     images[i].src = preload[i];
     images[i].onload = () => {
-      // eslint-disable-next-line no-console
-      console.log('loaded');
       callback();
     };
   }
+};
+export const refScrollTop = (ref: React.RefObject<any>) => {
+  if (ref === null || ref.current === null) return;
+  ref.current.scrollTop = ref.current.scrollHeight;
+  // eslint-disable-next-line no-console
+  console.log(ref.current);
 };
