@@ -29,6 +29,7 @@ const MessageBox = styled.div<MessageLeftBoxProps>`
   padding: 10px;
   border-radius: 10px;
   background-color: ${props => (props.isLeft ? '#424242' : '#0f5bb1')};
+  word-break: break-all;
 `;
 
 export default MessageLeftBox;

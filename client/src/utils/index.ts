@@ -14,6 +14,4 @@ export const preload = (preload: string | any[], callback: () => void) => {
 export const refScrollTop = (ref: React.RefObject<any>) => {
   if (ref === null || ref.current === null) return;
   ref.current.scrollTop = ref.current.scrollHeight;
-  // eslint-disable-next-line no-console
-  console.log(ref.current);
 };

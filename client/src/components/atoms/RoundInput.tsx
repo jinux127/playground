@@ -19,8 +19,13 @@ const RoundInput = ({ onSubmit }: RoundInputProps) => {
   const onEnterPress = (e: any) => {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
-      setText('');
+      if (!text.trim()) return;
+
+      if (textRef.current === null || textRef === null) return;
       onSubmit(text);
+      textRef.current.style.height = '30px';
+
+      setText('');
     }
   };
 
