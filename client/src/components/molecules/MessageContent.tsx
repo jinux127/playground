@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IMemo } from '../../types/interface';
+
 import MessageBox from '../atoms/MessageBox';
 
-export interface IMessageContentProps {
-  MemoContents: IMemo[];
-}
+export type IMessageContentProps = {
+  scrollRef: React.RefObject<HTMLDivElement> | null;
+};
 
-const MessageContent = () => {
+const MessageContent = ({ scrollRef }: IMessageContentProps) => {
   return (
     <Wrapper>
       {/* <Content>{nullCheck ? MemoContents[contentIndex].content : ''}</Content> */}
@@ -16,6 +16,12 @@ const MessageContent = () => {
       <MessageBox text={'저는 만들고 이야기하는 것을 좋아해요!'} />
       <MessageBox text={'저에게 연락을 남겨주세요~!😁'} />
       <MessageBox isLeft={false} />
+      <MessageBox isLeft={false} />
+      <MessageBox isLeft={false} />
+      <MessageBox isLeft={false} />
+      <MessageBox isLeft={false} />
+      <MessageBox isLeft={false} />
+      <div ref={scrollRef}></div>
     </Wrapper>
   );
 };

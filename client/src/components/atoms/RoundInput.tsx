@@ -1,12 +1,13 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type RoundInputProps = {
-  onSubmit: () => void;
+  onSubmit: (any) => void;
 };
 
 const RoundInput = ({ onSubmit }: RoundInputProps) => {
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const [text, setText] = useState('');
 
   const handleResizeHeight = useCallback(() => {
     if (textRef.current === null || textRef === null) return;
@@ -15,15 +16,23 @@ const RoundInput = ({ onSubmit }: RoundInputProps) => {
     textRef.current.style.height = `${textRef.current.scrollHeight}px`;
   }, []);
 
+  const onEnterPress = (e: any) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      setText('');
+      onSubmit(text);
+    }
+  };
+
   return (
     <Wrapper>
       <textarea
+        value={text}
+        onChange={e => setText(e.currentTarget.value)}
         ref={textRef}
         onInput={handleResizeHeight}
         placeholder="이메일로 전송됩니다."
-        onSubmit={onSubmit}
-        // eslint-disable-next-line no-console
-        onKeyDown={e => (e.key === 'Enter' ? onSubmit() : '')}
+        onKeyDown={onEnterPress}
       />
     </Wrapper>
   );

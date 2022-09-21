@@ -24,7 +24,7 @@ const Wrapper = styled.div<MessageLeftBoxProps>`
 `;
 
 const MessageBox = styled.div<MessageLeftBoxProps>`
-  max-width: 50%;
+  max-width: 80%;
 
   padding: 10px;
   border-radius: 10px;

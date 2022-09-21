@@ -14,28 +14,17 @@ export type MessageProps = {
 
 const Message = ({ closeEvent, ...props }: MessageProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  // const [editDone, ]
-  // const scrollToBottom = useCallback(() => {
-  //   if (editDone) {
-  //     // 스크롤 내리기
-  //     scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-  //   }
-  // }, [editDone]);
 
-  const sendEmail = () => {
-    // eslint-disable-next-line no-console
-    console.log('send');
+  const sendEmail = (text: string) => {
+    if (scrollRef === null || scrollRef.current === null) return;
+    scrollRef.current.scrollIntoView({ block: 'end', inline: 'nearest' });
   };
 
-  // useEffect(() => {
-  //   RefExample();
-  // }, [RefExample])
-
   return (
-    <Wrapper {...props} ref={scrollRef}>
+    <Wrapper {...props}>
       <MessageHeader {...props} redClick={closeEvent} />
       <ContentWrapper>
-        <MessageContent />
+        <MessageContent scrollRef={scrollRef} />
       </ContentWrapper>
       <RoundInput onSubmit={sendEmail} />
     </Wrapper>
