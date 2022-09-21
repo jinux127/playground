@@ -7,15 +7,17 @@ import MessageBox from '../atoms/MessageBox';
 export type IMessageContentProps = {
   // scrollRef: React.RefObject<HTMLDivElement>;
   messages: IMessage[];
+  loading: boolean;
 };
 
-const MessageContent = ({ messages }: IMessageContentProps) => {
+const MessageContent = ({ messages, loading }: IMessageContentProps) => {
   return (
     <Wrapper>
       {messages.map((message, i) => (
-        <MessageBox text={message.text} key={i} isLeft={message.isLeft} />
+        <MessageBox text={message.text} key={i} isLeft={message.isLeft} viewTooltip={true} />
       ))}
-      {/* <div ref={scrollRef} style={{ height: '1px' }}></div> */}
+
+      {loading ? <MessageBox text="전송중" isLeft={false} /> : ''}
     </Wrapper>
   );
 };
