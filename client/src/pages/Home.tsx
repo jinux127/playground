@@ -11,6 +11,7 @@ import Memo from '../components/organisms/Memo';
 import MemoArticles from '../MemoArticles';
 import useInterval from '../hooks/useInterval';
 import Launchpad from '../components/organisms/Launchpad';
+import Message from '../components/organisms/Message';
 
 const sampleData = [
   {
@@ -44,6 +45,7 @@ const sampleData = [
     alt: '다섯번째 슬라이드',
   },
 ];
+
 const LAUNCHPAD = keys.Launchpad;
 
 const Home = () => {
@@ -109,6 +111,12 @@ const Home = () => {
           isFirstLanding={isFirstLanding}
         />
       )}
+      <Message
+        zIndex={viewList.indexOf(keys.Message)}
+        top={20}
+        left={40}
+        closeEvent={() => handleCloseView(keys.Message)}
+      />
 
       <Dock handleViewList={handleViewList} setIsFirstLanding={setIsFirstLanding} />
     </Wrapper>
