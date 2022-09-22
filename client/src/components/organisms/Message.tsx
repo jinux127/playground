@@ -72,19 +72,4 @@ const ContentWrapper = styled.div`
   padding: 2px;
 `;
 
-// const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
-//   position: absolute;
-//   width: 50vw;
-//   box-shadow: 3px;
-//   height: 60vh;
-//   border-radius: 12px;
-//   background-color: rgb(31, 31, 31);
-//   top: ${props => props.top || 5}%;
-//   left: ${props => props.left || 5}%;
-//   z-index: ${props => props.zIndex};
-//   display: ${props => (props.zIndex < 0 ? 'none' : 'flex')};
-//   flex-direction: column;
-//   justify-content: space-between;
-// `;
-
 export default Message;
