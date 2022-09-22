@@ -53,11 +53,10 @@ const ListItem = styled.li<{ index: number; contentIndex: number | null }>`
 `;
 
 const Content = styled.div`
-  width: 100%;
+  width: 98%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  overflow: scroll;
+  margin-right: 1px;
+  overflow: auto;
 `;
 const List = styled.div`
   width: 40%;
@@ -72,7 +71,7 @@ const List = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 59vh;
+  height: 100%;
   display: flex;
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AppHeader from '../atoms/AppHeader';
 import { user } from '../organisms/Message';
 
 import ThreeDot from './ThreeDot';
@@ -27,7 +28,7 @@ const MessageHeader = ({
   };
 
   return (
-    <Wrapper>
+    <AppHeader>
       <LeftWapper>
         <ThreeDot redClick={redClick} />
         <NameWrapper>
@@ -52,7 +53,7 @@ const MessageHeader = ({
           </div>
         </NameWrapper>
       </LeftWapper>
-    </Wrapper>
+    </AppHeader>
   );
 };
 
@@ -87,20 +88,6 @@ const NameWrapper = styled.div`
 const LeftWapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  height: 8vh;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 15px;
-  border-radius: 12px 12px 0px 0px;
-  padding-right: 12px;
-  color: #fff;
-  width: 100%;
-  top: 0%;
-  background-color: #2e2e2e;
 `;
 
 export default MessageHeader;

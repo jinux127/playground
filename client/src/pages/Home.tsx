@@ -89,10 +89,12 @@ const Home = () => {
     <Wrapper>
       <Finder
         zIndex={viewList.indexOf(keys.Finder)}
-        top={30}
-        left={30}
+        top={15}
+        left={15}
         closeEvent={() => handleCloseView(keys.Finder)}
         finderData={finderData || []}
+        height={30}
+        width={65}
       />
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}
@@ -100,6 +102,8 @@ const Home = () => {
         left={5}
         closeEvent={() => handleCloseView(keys.Memo)}
         MemoContents={MemoArticles}
+        height={40}
+        width={50}
       />
       {isFirstLanding >= 1 && (
         <Launchpad
@@ -113,8 +117,10 @@ const Home = () => {
       )}
       <Message
         zIndex={viewList.indexOf(keys.Message)}
-        top={20}
-        left={40}
+        top={10}
+        left={20}
+        height={40}
+        width={50}
         closeEvent={() => handleCloseView(keys.Message)}
       />
 

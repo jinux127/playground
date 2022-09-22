@@ -66,12 +66,15 @@ const Table = styled.table`
     tr:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
+    td {
+      padding: 0.2rem;
+    }
     cursor: pointer;
   }
 `;
 
 const Wrapper = styled.div`
-  height: 35vh;
+  height: 94%;
   overflow: auto;
 `;
 

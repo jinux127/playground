@@ -8,11 +8,9 @@ import RoundInput from '../atoms/RoundInput';
 import MessageContent from '../molecules/MessageContent';
 import MessageHeader from '../molecules/MessageHeader';
 import { v4 as uuidv4 } from 'uuid';
+import AppFrame, { AppFrameProps } from '../atoms/AppFrame';
 
-export type MessageProps = {
-  zIndex: number;
-  top?: number;
-  left?: number;
+export type MessageProps = AppFrameProps & {
   closeEvent: () => void;
 };
 
@@ -52,7 +50,7 @@ const Message = ({ closeEvent, ...props }: MessageProps) => {
   }, [messages]);
 
   return (
-    <Wrapper {...props}>
+    <AppFrame {...props}>
       <MessageHeader
         {...props}
         redClick={closeEvent}
@@ -64,29 +62,29 @@ const Message = ({ closeEvent, ...props }: MessageProps) => {
         <MessageContent messages={messages} loading={loading} />
       </ContentWrapper>
       <RoundInput onSubmit={sendEmail} />
-    </Wrapper>
+    </AppFrame>
   );
 };
 
 const ContentWrapper = styled.div`
-  height: 100%;
+  height: 90%;
   overflow: scroll;
   padding: 2px;
 `;
 
-const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
-  position: absolute;
-  width: 50vw;
-  box-shadow: 3px;
-  height: 60vh;
-  border-radius: 12px;
-  background-color: rgb(31, 31, 31);
-  top: ${props => props.top || 5}%;
-  left: ${props => props.left || 5}%;
-  z-index: ${props => props.zIndex};
-  display: ${props => (props.zIndex < 0 ? 'none' : 'flex')};
-  flex-direction: column;
-  justify-content: space-between;
-`;
+// const Wrapper = styled.div<{ zIndex: number; top?: number; left?: number }>`
+//   position: absolute;
+//   width: 50vw;
+//   box-shadow: 3px;
+//   height: 60vh;
+//   border-radius: 12px;
+//   background-color: rgb(31, 31, 31);
+//   top: ${props => props.top || 5}%;
+//   left: ${props => props.left || 5}%;
+//   z-index: ${props => props.zIndex};
+//   display: ${props => (props.zIndex < 0 ? 'none' : 'flex')};
+//   flex-direction: column;
+//   justify-content: space-between;
+// `;
 
 export default Message;
