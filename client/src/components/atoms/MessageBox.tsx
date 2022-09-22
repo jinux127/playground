@@ -6,13 +6,14 @@ export type MessageLeftBoxProps = {
   text?: string;
   viewTooltip?: boolean;
 };
-const defaultString = `email: wlsdn0127@naver.com
+
+const DEFAULT_TEXT = `email: wlsdn0127@naver.com
 안녕하세요 프론트엔드 개발자 정진우입니다.
 저는 만들고 이야기하는 것을 좋아합니다. 저에게 연락을 남겨주세요 😁`;
 
 const MessageLeftBox = ({
   isLeft = true,
-  text = defaultString,
+  text = DEFAULT_TEXT,
   viewTooltip = false,
 }: MessageLeftBoxProps) => {
   return (
