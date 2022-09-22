@@ -18,7 +18,8 @@ const Wrapper = styled.div<AppFrameProps>`
   position: absolute;
   width: ${props => props.width}rem;
   height: ${props => props.height}rem;
-  box-shadow: 3px;
+  box-shadow: 1px 1px 15px 5px #000000;
+  border: 1px solid #fafafa38;
   border-radius: 12px;
   background-color: rgb(31, 31, 31);
   top: ${props => props.top || 5}%;
