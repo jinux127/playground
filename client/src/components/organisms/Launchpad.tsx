@@ -33,7 +33,7 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
   };
 
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} onClick={closeEvent}>
       <CarouselWrapper {...props}>
         <Carousel
           carouselList={LaunchpadContents}
