@@ -102,7 +102,7 @@ const Home = () => {
         left={5}
         closeEvent={() => handleCloseView(keys.Memo)}
         MemoContents={MemoArticles}
-        height={40}
+        height={35}
         width={50}
       />
       {isFirstLanding >= 1 && (
@@ -119,7 +119,7 @@ const Home = () => {
         zIndex={viewList.indexOf(keys.Message)}
         top={10}
         left={20}
-        height={40}
+        height={35}
         width={50}
         closeEvent={() => handleCloseView(keys.Message)}
       />

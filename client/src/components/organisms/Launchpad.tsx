@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { background } from '../../assets/images';
 import useInterval from '../../hooks/useInterval';
-import Carousel from '../atoms/Carousel';
+import Carousel from '../molecules/Carousel';
 
 export type LaunchpadProps = {
   zIndex: number;
@@ -49,8 +49,9 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
 const CarouselWrapper = styled.div`
   width: 100%;
   height: 90%;
-
-  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const fadeOut = keyframes`
@@ -93,11 +94,15 @@ const Wrapper = styled.div<{
     bottom: 0;
     background-image: url(${background});
     background-size: cover;
-    backdrop-filter: blur(2px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
     z-index: -1;
     content: '';
   }
-  /* display: ${props => (props.isFirstLanding > 1 ? '' : 'none')}; */
+  /* backdrop-filter: ; */
   animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.2s;
   animation-fill-mode: forwards;
   width: 100vw;

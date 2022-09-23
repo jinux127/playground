@@ -12,8 +12,20 @@ import icon_search from './icon_search.png';
 import logo_boot_apple from './logo_boot_apple.png';
 import background from './background.jpeg';
 import icon_pencil from './icon_pencil.png';
+import icon_default from './icon_default.png';
+import icon_notion from './icon_notion.png';
+import icon_bingsu from './icon_bingsu.png';
+import icon_sodong from './icon_sodong.png';
+import icon_photocalendar from './icon_photocalendar.jpeg';
+import icon_quarantine from './icon_quarantine.jpeg';
 
 export {
+  icon_quarantine,
+  icon_photocalendar,
+  icon_default,
+  icon_sodong,
+  icon_bingsu,
+  icon_notion,
   icon_pencil,
   background,
   logo_boot_apple,

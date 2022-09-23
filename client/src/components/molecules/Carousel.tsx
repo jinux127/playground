@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import PadIconInfo from '../../PadIconInfo';
+
 const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) => {
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
@@ -12,13 +14,13 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
     document.onkeydown = isView ? e => console.log(e) : null;
   }, [isView]);
 
-  const imgSize = useRef(4);
+  const imgSize = useRef(1);
 
   const moveSlide = i => {
     let nextIndex = current + i;
 
     if (nextIndex < 0) nextIndex = imgSize.current - 1;
-    else if (nextIndex >= 4) nextIndex = 0;
+    else if (nextIndex >= 1) nextIndex = 0;
 
     setCurrent(nextIndex);
   };
@@ -40,10 +42,17 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
         </div>
         <Window>
           <FlexBox style={style}>
-            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}>tesgggt</CarouselItem>
-            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}>a</CarouselItem>
-            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>b</CarouselItem>
-            <CarouselItem style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>c</CarouselItem>
+            <CarouselItem>
+              <ContentGridWrapper>
+                {PadIconInfo.map(iconInfo => {
+                  return (
+                    <GridItem content={iconInfo.title}>
+                      <img src={iconInfo.icon} alt={iconInfo.title} />
+                    </GridItem>
+                  );
+                })}
+              </ContentGridWrapper>
+            </CarouselItem>
           </FlexBox>
         </Window>
         <div
@@ -64,11 +73,63 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
     </Wrapper>
   );
 };
+
+// const IconDefault = styled.div`
+//   width: 100px;
+//   height: 100px;
+//   background-color: rgba(255, 255, 255, 0.5);
+//   padding: 2px;
+//   border-radius: 20px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: relative;
+//   img {
+//     object-fit: cover;
+//   }
+//   ::after {
+//     content: '테스트';
+//     position: absolute;
+//     bottom: -25px;
+//   }
+// `;
+
+const GridItem = styled.div<{ content: string }>`
+  width: 100px;
+  height: 100px;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  padding: 2px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  img {
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  ::after {
+    content: '${props => props.content}';
+    position: absolute;
+    bottom: -25px;
+  }
+  cursor: pointer;
+`;
+
+const ContentGridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+`;
+
 const CarouselItem = styled.div`
   width: 90vw;
   height: 90vh;
-  border: 1px solid;
-  flex-shrink: 0;
+
+  display: grid;
 `;
 
 const Window = styled.div`
@@ -83,7 +144,7 @@ const CarouselWrapper = styled.div`
 `;
 
 const FlexBox = styled.div`
-  transition: all 1s cubic-bezier(0.1, 0.2, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.5, 1, 0.8);
   display: flex;
 `;
 
