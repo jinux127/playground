@@ -29,6 +29,14 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
     setStyle({ marginLeft: `-${current}00%` });
   }, [current]);
 
+  const handleAppClick = e => {
+    // todo: 나중에 앱 클릭 시 배경화면으로 이동하는 이벤트를 만들경우 삭제
+    e.stopPropagation();
+    if (isView) {
+      alert('test');
+    }
+  };
+
   return (
     <Wrapper>
       <CarouselWrapper>
@@ -48,7 +56,7 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
                 {PadIconInfo.map(iconInfo => {
                   return (
                     // todo: alert 대신 커스텀 알림창으로 띄우고 프로젝트 이동
-                    <GridItem onClick={() => alert('test')}>
+                    <GridItem onClick={handleAppClick} isView={isView}>
                       <img src={iconInfo.icon} alt={iconInfo.title} />
                       <span>{iconInfo.title}</span>
                     </GridItem>
@@ -78,11 +86,9 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
   );
 };
 
-const ArrowButton = styled.div`
-  z-index: 2;
-`;
+const ArrowButton = styled.div``;
 
-const GridItem = styled.div`
+const GridItem = styled.div<{ isView: boolean }>`
   width: 100px;
   height: 100px;
   /* background-color: rgba(255, 255, 255, 0.5); */
@@ -93,7 +99,7 @@ const GridItem = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
-  cursor: pointer;
+  cursor: ${props => (props.isView ? 'pointer' : '')};
   button {
     width: 100%;
     height: 100%;
