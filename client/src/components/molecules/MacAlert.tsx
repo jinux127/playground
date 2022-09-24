@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { icon_chrome } from '../../assets/images';
 
@@ -8,8 +8,27 @@ type MacAlertProps = {
 };
 
 const MacAlert = ({ title, url }: MacAlertProps) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const overMouse = () => {
+    setIsHover(true);
+  };
+
+  const outMouse = () => {
+    setIsHover(false);
+  };
+
+  const closeEvent = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    alert('종료');
+  };
+
+  const moveEvent = (e: React.MouseEvent) => {
+    alert('페이지 이동');
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onMouseOver={overMouse} onMouseOut={outMouse} onClick={moveEvent}>
       <IconWrapper>
         <img src={icon_chrome} alt="아이콘" />
       </IconWrapper>
@@ -18,11 +37,25 @@ const MacAlert = ({ title, url }: MacAlertProps) => {
         <MessageUrl>{url}</MessageUrl>
         <Message>새창으로 이동합니다.</Message>
       </MessageWrapper>
+      {isHover ? <CircleButton onClick={closeEvent}>x</CircleButton> : ''}
     </Wrapper>
   );
 };
 
 const Message = styled.p``;
+const CircleButton = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgb(56, 56, 56);
+  position: absolute;
+  border-radius: 0.75rem;
+  border: 1px solid #fafafa38;
+  left: -0.5rem;
+  top: -0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const MessageUrl = styled.p`
   font-weight: bold;
   font-size: 0.5rem;
@@ -61,20 +94,6 @@ const Wrapper = styled.div`
 
   border: 1px solid #fafafa38;
   background-color: rgb(56, 56, 56);
-  :hover {
-    ::after {
-      content: ' ';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
-      background-color: rgb(56, 56, 56);
-      position: absolute;
-      border-radius: 0.75rem;
-      border: 1px solid #fafafa38;
-      left: -0.5rem;
-      top: -0.5rem;
-    }
-  }
 `;
 
 export default MacAlert;
