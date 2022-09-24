@@ -12,6 +12,7 @@ import MemoArticles from '../MemoArticles';
 import useInterval from '../hooks/useInterval';
 import Launchpad from '../components/organisms/Launchpad';
 import Message from '../components/organisms/Message';
+import MacAlert from '../components/molecules/MacAlert';
 
 const sampleData = [
   {
@@ -94,7 +95,7 @@ const Home = () => {
         closeEvent={() => handleCloseView(keys.Finder)}
         finderData={finderData || []}
         height={30}
-        width={65}
+        width={50}
       />
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}
@@ -124,6 +125,7 @@ const Home = () => {
         closeEvent={() => handleCloseView(keys.Message)}
       />
 
+      <MacAlert title="빙수먹을래?" url="https://asdfajhsdhfj.com" />
       <Dock handleViewList={handleViewList} setIsFirstLanding={setIsFirstLanding} />
     </Wrapper>
   );

@@ -29,25 +29,36 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
     setStyle({ marginLeft: `-${current}00%` });
   }, [current]);
 
+  const handleAppClick = e => {
+    // todo: 나중에 앱 클릭 시 배경화면으로 이동하는 이벤트를 만들경우 삭제
+    e.stopPropagation();
+    if (isView) {
+      alert('test');
+    }
+  };
+
   return (
     <Wrapper>
       <CarouselWrapper>
-        <div
+        <ArrowButton
           className="btn"
-          onClick={() => {
+          onClick={e => {
+            e.stopPropagation();
             moveSlide(-1);
           }}
         >
           &lt;
-        </div>
+        </ArrowButton>
         <Window>
           <FlexBox style={style}>
             <CarouselItem>
               <ContentGridWrapper>
                 {PadIconInfo.map(iconInfo => {
                   return (
-                    <GridItem content={iconInfo.title}>
+                    // todo: alert 대신 커스텀 알림창으로 띄우고 프로젝트 이동
+                    <GridItem onClick={handleAppClick} isView={isView}>
                       <img src={iconInfo.icon} alt={iconInfo.title} />
+                      <span>{iconInfo.title}</span>
                     </GridItem>
                   );
                 })}
@@ -55,14 +66,15 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
             </CarouselItem>
           </FlexBox>
         </Window>
-        <div
+        <ArrowButton
           className="btn"
-          onClick={() => {
+          onClick={e => {
+            e.stopPropagation();
             moveSlide(1);
           }}
         >
           &gt;
-        </div>
+        </ArrowButton>
       </CarouselWrapper>
 
       {/* <div className="position">
@@ -74,27 +86,9 @@ const Carousel = ({ count, carouselList, carouselRef, handleCarousel, isView }) 
   );
 };
 
-// const IconDefault = styled.div`
-//   width: 100px;
-//   height: 100px;
-//   background-color: rgba(255, 255, 255, 0.5);
-//   padding: 2px;
-//   border-radius: 20px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: relative;
-//   img {
-//     object-fit: cover;
-//   }
-//   ::after {
-//     content: '테스트';
-//     position: absolute;
-//     bottom: -25px;
-//   }
-// `;
+const ArrowButton = styled.div``;
 
-const GridItem = styled.div<{ content: string }>`
+const GridItem = styled.div<{ isView: boolean }>`
   width: 100px;
   height: 100px;
   /* background-color: rgba(255, 255, 255, 0.5); */
@@ -103,17 +97,23 @@ const GridItem = styled.div<{ content: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   position: relative;
+  cursor: ${props => (props.isView ? 'pointer' : '')};
+  button {
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
   img {
     object-fit: cover;
     border-radius: 10px;
   }
-  ::after {
-    content: '${props => props.content}';
-    position: absolute;
-    bottom: -25px;
+
+  span {
+    margin: 0.5rem;
+    font-size: 0.8rem;
   }
-  cursor: pointer;
 `;
 
 const ContentGridWrapper = styled.div`

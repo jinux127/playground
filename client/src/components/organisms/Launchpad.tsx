@@ -33,8 +33,8 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
   };
 
   return (
-    <Wrapper {...props}>
-      <CarouselWrapper>
+    <Wrapper {...props} onClick={closeEvent}>
+      <CarouselWrapper {...props}>
         <Carousel
           carouselList={LaunchpadContents}
           carouselRef={carouselRef}
@@ -46,7 +46,7 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
     </Wrapper>
   );
 };
-const CarouselWrapper = styled.div`
+const CarouselWrapper = styled.div<{ zIndex: number }>`
   width: 100%;
   height: 90%;
   display: flex;
@@ -63,6 +63,7 @@ const fadeOut = keyframes`
       opacity: 0;
       transform: scale(1.1);
       display:none;
+
     }
     `;
 const fadeIn = keyframes`
@@ -75,7 +76,7 @@ const fadeIn = keyframes`
       transform: scale(1);
       opacity: 1;
     }
-  `;
+    `;
 
 const Wrapper = styled.div<{
   zIndex: number;
@@ -102,11 +103,9 @@ const Wrapper = styled.div<{
     z-index: -1;
     content: '';
   }
-  /* backdrop-filter: ; */
-  animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.2s;
+  animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.4s;
   animation-fill-mode: forwards;
   width: 100vw;
   height: 100vh;
-  z-index: ${props => props.zIndex};
 `;
 export default Launchpad;
