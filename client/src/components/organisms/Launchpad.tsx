@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { background } from '../../assets/images';
-import useInterval from '../../hooks/useInterval';
+
 import Carousel from '../molecules/Carousel';
 
 export type LaunchpadProps = {
@@ -11,16 +11,19 @@ export type LaunchpadProps = {
   closeEvent: () => void;
   LaunchpadContents: any;
   isFirstLanding: number;
+  setMacAlert: React.Dispatch<
+    React.SetStateAction<{
+      title: string;
+      url: string;
+      icon: string;
+      isView: boolean;
+    }>
+  >;
 };
 
-const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) => {
+const Launchpad = ({ closeEvent, LaunchpadContents, setMacAlert, ...props }: LaunchpadProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [count, setCount] = useState(1);
-  const [carouselList] = useState([]);
-
-  useInterval(() => {
-    count < carouselList.length ? setCount(cur => cur + 1) : setCount(1);
-  }, 200);
+  const [count] = useState(1);
 
   const handleCarousel = count => {
     if (!carouselRef.current) return;
@@ -41,6 +44,8 @@ const Launchpad = ({ closeEvent, LaunchpadContents, ...props }: LaunchpadProps) 
           count={count}
           handleCarousel={handleCarousel}
           isView={!(props.zIndex < 0)}
+          setMacAlert={setMacAlert}
+          closeEvent={closeEvent}
         />
       </CarouselWrapper>
     </Wrapper>
@@ -103,6 +108,7 @@ const Wrapper = styled.div<{
     z-index: -1;
     content: '';
   }
+  z-index: ${props => props.zIndex};
   animation: ${props => (props.zIndex < 0 ? fadeOut : fadeIn)} 0.4s;
   animation-fill-mode: forwards;
   width: 100vw;

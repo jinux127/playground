@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { icon_chrome } from '../../assets/images';
 
 type MacAlertProps = {
   title: string;
   url: string;
+  icon: string;
+  isView: boolean;
+  handleCloseAlert: any;
 };
 
-const MacAlert = ({ title, url }: MacAlertProps) => {
+const MacAlert = ({ title, url, icon, isView, handleCloseAlert }: MacAlertProps) => {
   const [isHover, setIsHover] = useState(false);
 
   const overMouse = () => {
@@ -20,17 +22,18 @@ const MacAlert = ({ title, url }: MacAlertProps) => {
 
   const closeEvent = (e: React.MouseEvent) => {
     e.stopPropagation();
-    alert('종료');
+    handleCloseAlert();
   };
 
   const moveEvent = (e: React.MouseEvent) => {
-    alert('페이지 이동');
+    window.open(url);
+    handleCloseAlert();
   };
 
   return (
-    <Wrapper onMouseOver={overMouse} onMouseOut={outMouse} onClick={moveEvent}>
+    <Wrapper onMouseOver={overMouse} onMouseOut={outMouse} onClick={moveEvent} isView={isView}>
       <IconWrapper>
-        <img src={icon_chrome} alt="아이콘" />
+        <img src={icon} alt="아이콘" />
       </IconWrapper>
       <MessageWrapper>
         <MessageTitle>{title}</MessageTitle>
@@ -65,32 +68,43 @@ const MessageTitle = styled.p`
 `;
 
 const MessageWrapper = styled.div`
+  text-overflow: ellipsis;
+  overflow: hidden;
   p {
+    width: 100%;
+    white-space: nowrap;
     margin: 2px;
   }
 `;
 
 const IconWrapper = styled.div`
   width: 3rem;
+  height: 3rem;
   margin: 1rem;
   img {
-    object-fit: cover;
+    border-radius: 0.4rem;
+    object-fit: contain;
+    min-width: 3rem;
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isView: boolean }>`
   display: flex;
   justify-content: start;
   align-items: center;
+
   font-size: 0.8rem;
+
   border-radius: 12px;
   cursor: pointer;
-  margin: 1rem;
   color: white;
   height: 4rem;
-  position: absolute;
+  position: fixed;
   width: 20rem;
-  right: 0%;
+  right: ${props => (props.isView ? '0' : '-20')}rem;
+  margin: 1rem;
+  opacity: ${props => (props.isView ? '1' : '0')};
+  transition: right 0.2s cubic-bezier(0.3, 0.5, 0.5, 1);
 
   border: 1px solid #fafafa38;
   background-color: rgb(56, 56, 56);

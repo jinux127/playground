@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -53,6 +53,7 @@ const Home = () => {
   const [viewList, setViewList] = useState<string[]>([]);
   const [finderData, setFinderData] = useState<IFinder[]>([]);
   const [isFirstLanding, setIsFirstLanding] = useState(0);
+  const [macAlert, setMacAlert] = useState({ title: '', url: '', icon: '', isView: false });
 
   const handleViewList = (key: string) => {
     const newViewList = viewList.filter(view => view !== key);
@@ -86,6 +87,15 @@ const Home = () => {
     if (!finderData.length) getFinderData();
   }, 1000);
 
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(macAlert);
+  }, [macAlert]);
+
+  const handleCloseAlert = () => {
+    setMacAlert(cur => ({ ...cur, isView: false }));
+  };
+
   return (
     <Wrapper>
       <Finder
@@ -114,6 +124,7 @@ const Home = () => {
           closeEvent={() => handleCloseView(keys.Launchpad)}
           LaunchpadContents={sampleData}
           isFirstLanding={isFirstLanding}
+          setMacAlert={setMacAlert}
         />
       )}
       <Message
@@ -125,7 +136,7 @@ const Home = () => {
         closeEvent={() => handleCloseView(keys.Message)}
       />
 
-      <MacAlert title="빙수먹을래?" url="https://asdfajhsdhfj.com" />
+      <MacAlert {...macAlert} handleCloseAlert={handleCloseAlert} />
       <Dock handleViewList={handleViewList} setIsFirstLanding={setIsFirstLanding} />
     </Wrapper>
   );
