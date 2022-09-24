@@ -1,5 +1,5 @@
 import {
-  icon_notion,
+  icon_togefit,
   icon_bingsu,
   icon_sodong,
   icon_photocalendar,
@@ -8,9 +8,9 @@ import {
 
 const PadIconInfo: { icon: string; title: string; url: string }[] = [
   {
-    icon: icon_notion,
+    icon: icon_togefit,
     title: 'Togefit',
-    url: 'https://jinux127.notion.site/Togefit-0acdb4520adf4ba99db142bceaad57ec',
+    url: 'https://github.com/jinux127/TogeFit',
   },
   {
     icon: icon_bingsu,
@@ -20,17 +20,17 @@ const PadIconInfo: { icon: string; title: string; url: string }[] = [
   {
     icon: icon_sodong,
     title: '소동이네',
-    url: 'https://jinux127.notion.site/Togefit-0acdb4520adf4ba99db142bceaad57ec',
+    url: 'https://github.com/jinux127/SodongShop',
   },
   {
     icon: icon_photocalendar,
     title: '포토캘린더',
-    url: 'https://jinux127.notion.site/Togefit-0acdb4520adf4ba99db142bceaad57ec',
+    url: 'https://github.com/TeamEliceSnail/photocalendar',
   },
   {
     icon: icon_quarantine,
     title: '자가격리 안전보호 앱',
-    url: 'https://jinux127.notion.site/Togefit-0acdb4520adf4ba99db142bceaad57ec',
+    url: 'https://jinux127.notion.site/56a7c6230d9c4ff99b9adc7079db5aed',
   },
 ];
 

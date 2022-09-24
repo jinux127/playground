@@ -18,9 +18,11 @@ import icon_bingsu from './icon_bingsu.png';
 import icon_sodong from './icon_sodong.png';
 import icon_photocalendar from './icon_photocalendar.jpeg';
 import icon_quarantine from './icon_quarantine.jpeg';
+import icon_togefit from './icon_togefit.png';
 
 export {
   icon_quarantine,
+  icon_togefit,
   icon_photocalendar,
   icon_default,
   icon_sodong,
