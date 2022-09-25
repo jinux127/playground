@@ -11,12 +11,12 @@
 - [x] Landing
 - [x] Dock + Home
 - [x] Finder
-- [ ] Launchpad (ing...)
+- [x] Launchpad
 - [ ] Chrome
 - [x] Memo
 - [x] Message
 - [ ] Visual Studio Code
-- [ ] Trash
+- [x] Trash (임시)
 - [ ] drag 이동
 
 ## Landing + Home
