@@ -7,12 +7,13 @@ import { FinderContent, FinderFooter, FinderHeader } from '../molecules';
 export type FinderProps = AppFrameProps & {
   closeEvent: () => void;
   finderData: IFinder[];
+  title: string;
 };
 
-const Finder = ({ closeEvent, finderData = [], ...props }: FinderProps) => {
+const Finder = ({ closeEvent, finderData = [], title, ...props }: FinderProps) => {
   return (
     <AppFrame {...props}>
-      <FinderHeader {...props} redClick={closeEvent} title={'글 목록'} />
+      <FinderHeader {...props} redClick={closeEvent} title={title} />
       {finderData ? <FinderContent FinderContents={finderData} /> : ''}
       <FinderFooter />
     </AppFrame>

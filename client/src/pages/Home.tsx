@@ -52,6 +52,7 @@ const LAUNCHPAD = keys.Launchpad;
 const Home = () => {
   const [viewList, setViewList] = useState<string[]>([]);
   const [finderData, setFinderData] = useState<IFinder[]>([]);
+
   const [isFirstLanding, setIsFirstLanding] = useState(0);
   const [macAlert, setMacAlert] = useState({ title: '', url: '', icon: '', isView: false });
 
@@ -106,6 +107,7 @@ const Home = () => {
         finderData={finderData || []}
         height={30}
         width={50}
+        title="글 목록"
       />
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}
@@ -134,6 +136,25 @@ const Home = () => {
         height={35}
         width={50}
         closeEvent={() => handleCloseView(keys.Message)}
+      />
+
+      <Finder
+        zIndex={viewList.indexOf(keys.Trash)}
+        top={10}
+        left={30}
+        closeEvent={() => handleCloseView(keys.Trash)}
+        finderData={[
+          {
+            title: '임시 기능입니다.',
+            date: '2022년 09월 25일',
+            desc: '임시',
+            href: '',
+            likes: '',
+          },
+        ]}
+        height={30}
+        width={50}
+        title="휴지통"
       />
 
       <MacAlert {...macAlert} handleCloseAlert={handleCloseAlert} />
