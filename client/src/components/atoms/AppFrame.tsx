@@ -11,7 +11,11 @@ export type AppFrameProps = {
 };
 
 const AppFrame = ({ children, ...props }: AppFrameProps) => {
-  return <Wrapper {...props}>{children}</Wrapper>;
+  return (
+    <Wrapper {...props} draggable>
+      {children}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div<AppFrameProps>`
