@@ -17,7 +17,7 @@
 - [x] Message
 - [ ] Visual Studio Code
 - [x] Trash (임시)
-- [ ] drag 이동
+- [x] drag 이동
 
 ## Landing + Home
 
