@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -88,17 +88,23 @@ const Home = () => {
     if (!finderData.length) getFinderData();
   }, 1000);
 
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(macAlert);
-  }, [macAlert]);
-
   const handleCloseAlert = () => {
     setMacAlert(cur => ({ ...cur, isView: false }));
   };
 
+  const onDrop = e => {
+    // eslint-disable-next-line no-console
+    console.log('test');
+    // eslint-disable-next-line no-console
+    console.log(e.pageX);
+  };
+  function dragover(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onDrop={onDrop} onDragOver={dragover}>
       <Finder
         zIndex={viewList.indexOf(keys.Finder)}
         top={15}
@@ -165,6 +171,8 @@ const Home = () => {
 
 const Wrapper = styled.div`
   color: #fff;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export default Home;
