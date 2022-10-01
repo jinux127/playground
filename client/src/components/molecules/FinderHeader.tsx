@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import AppHeader from '../atoms/AppHeader';
+import AppHeader, { AppHeaderProps } from '../atoms/AppHeader';
 
 import FinderMenu from './FinderMenu';
 import LRArrow from './LRArrow';
 import ThreeDot from './ThreeDot';
 
-type FinderHeaderProps = {
+export type FinderHeaderProps = AppHeaderProps & {
   redClick: () => void;
   title: string;
 };
 
 const FinderHeader = ({ redClick, title, ...props }: FinderHeaderProps) => {
   return (
-    <AppHeader>
+    <AppHeader {...props}>
       <LeftWapper>
         <ThreeDot redClick={redClick} />
         <LRArrow />

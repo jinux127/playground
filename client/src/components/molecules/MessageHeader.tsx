@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import AppHeader from '../atoms/AppHeader';
+import AppHeader, { AppHeaderProps } from '../atoms/AppHeader';
 import { user } from '../organisms/Message';
 
 import ThreeDot from './ThreeDot';
 
-type MessageHeaderProps = {
+type MessageHeaderProps = AppHeaderProps & {
   redClick: () => void;
   title?: string;
   callerInfo: user;
@@ -28,7 +28,7 @@ const MessageHeader = ({
   };
 
   return (
-    <AppHeader>
+    <AppHeader {...props}>
       <LeftWapper>
         <ThreeDot redClick={redClick} />
         <NameWrapper>

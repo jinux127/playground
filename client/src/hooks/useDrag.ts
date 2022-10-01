@@ -1,25 +1,36 @@
-// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-// const useDrag = (x:number, y:number) => {
+const useDrag = (left: number, top: number) => {
+  const [x, setX] = useState(left);
+  const [y, setY] = useState(top);
+  const [isKeyDown, setIsKeyDown] = useState(false);
+  const [shiftX, setShiftX] = useState(0);
+  const [shiftY, setShiftY] = useState(0);
 
-//   const [distX, setDistX] = useState(x);
-//   const [distY, setDistY] = useState(x);
-//   const [posX, setPosX] = useState(x);
-//   const [distX, setDistX] = useState(x);
+  const handleMouseDown = e => {
+    setShiftX(e.clientX - e.target.getBoundingClientRect().left);
+    setShiftY(e.clientY - e.target.getBoundingClientRect().top);
+    setIsKeyDown(true);
+  };
 
-//   useEffect(() => {
-//     savedCallback.current = callback;
-//   }, [callback]);
+  const handleMouseMove = e => {
+    if (isKeyDown) {
+      setX(e.pageX - shiftX);
+      setY(e.pageY - shiftY);
+    }
+  };
 
-//   useEffect(() => {
-//     const tick = () => {
-//       if (savedCallback.current) savedCallback.current();
-//     };
+  const handleMouseUp = () => {
+    setIsKeyDown(false);
+  };
 
-//     let id = setInterval(tick, delay);
+  return {
+    x,
+    y,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+  };
+};
 
-//     return () => clearInterval(id);
-//   }, [delay]);
-// };
-
-// export default useDrag;
+export default useDrag;

@@ -6,8 +6,6 @@ import Carousel from '../molecules/Carousel';
 
 export type LaunchpadProps = {
   zIndex: number;
-  top?: number;
-  left?: number;
   closeEvent: () => void;
   LaunchpadContents: any;
   isFirstLanding: number;
@@ -85,8 +83,7 @@ const fadeIn = keyframes`
 
 const Wrapper = styled.div<{
   zIndex: number;
-  top?: number;
-  left?: number;
+
   isFirstLanding: number;
 }>`
   display: flex;

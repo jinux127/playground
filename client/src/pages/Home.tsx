@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React from 'react';
 
 import { useState } from 'react';
@@ -92,43 +94,32 @@ const Home = () => {
     setMacAlert(cur => ({ ...cur, isView: false }));
   };
 
-  const onDrop = e => {
-    // eslint-disable-next-line no-console
-    console.log('test');
-    // eslint-disable-next-line no-console
-    console.log(e.pageX);
-  };
-  function dragover(event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
-
   return (
-    <Wrapper onDrop={onDrop} onDragOver={dragover}>
+    <Wrapper>
       <Finder
         zIndex={viewList.indexOf(keys.Finder)}
-        top={15}
-        left={15}
-        closeEvent={() => handleCloseView(keys.Finder)}
+        top={120}
+        left={200}
+        redClick={() => handleCloseView(keys.Finder)}
         finderData={finderData || []}
         height={30}
         width={50}
         title="글 목록"
+        handleClick={() => handleViewList(keys.Finder)}
       />
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}
-        top={5}
-        left={5}
+        top={130}
+        left={250}
         closeEvent={() => handleCloseView(keys.Memo)}
         MemoContents={MemoArticles}
         height={35}
         width={50}
+        handleClick={() => handleViewList(keys.Memo)}
       />
       {isFirstLanding >= 1 && (
         <Launchpad
           zIndex={viewList.indexOf(keys.Launchpad)}
-          top={5}
-          left={5}
           closeEvent={() => handleCloseView(keys.Launchpad)}
           LaunchpadContents={sampleData}
           isFirstLanding={isFirstLanding}
@@ -137,18 +128,20 @@ const Home = () => {
       )}
       <Message
         zIndex={viewList.indexOf(keys.Message)}
-        top={10}
-        left={20}
+        top={140}
+        left={300}
         height={35}
         width={50}
         closeEvent={() => handleCloseView(keys.Message)}
+        handleClick={() => handleViewList(keys.Message)}
       />
 
       <Finder
         zIndex={viewList.indexOf(keys.Trash)}
-        top={10}
-        left={30}
-        closeEvent={() => handleCloseView(keys.Trash)}
+        top={130}
+        left={280}
+        redClick={() => handleCloseView(keys.Trash)}
+        handleClick={() => handleViewList(keys.Trash)}
         finderData={[
           {
             title: '임시 기능입니다.',

@@ -1,12 +1,21 @@
+/* eslint-disable no-console */
 import React from 'react';
 import styled from 'styled-components';
 
-type AppHeaderProps = {
-  children: React.ReactNode;
+export type AppHeaderProps = {
+  children?: React.ReactNode;
+  onMouseDown?: any;
+  onMouseMove?: any;
+  onMouseUp?: any;
+  handleViewList?: (key: string) => void;
 };
 
-const AppHeader = ({ children }: AppHeaderProps) => {
-  return <Wrapper>{children}</Wrapper>;
+const AppHeader = ({ children, onMouseDown, onMouseMove, onMouseUp }: AppHeaderProps) => {
+  return (
+    <Wrapper onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={onMouseUp}>
+      {children}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
@@ -21,6 +30,7 @@ const Wrapper = styled.div`
   width: 100%;
   top: 0%;
   background-color: #2e2e2e;
+  cursor: move;
 `;
 
 export default AppHeader;

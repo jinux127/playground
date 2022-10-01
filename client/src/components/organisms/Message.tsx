@@ -9,6 +9,7 @@ import MessageContent from '../molecules/MessageContent';
 import MessageHeader from '../molecules/MessageHeader';
 import { v4 as uuidv4 } from 'uuid';
 import AppFrame, { AppFrameProps } from '../atoms/AppFrame';
+import useDrag from '../../hooks/useDrag';
 
 export type MessageProps = AppFrameProps & {
   closeEvent: () => void;
@@ -16,11 +17,12 @@ export type MessageProps = AppFrameProps & {
 
 export type user = { email: string; name: string };
 
-const Message = ({ closeEvent, ...props }: MessageProps) => {
+const Message = ({ closeEvent, left, top, ...props }: MessageProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState(INIT_MESSAGES);
   const [loading, setLoading] = useState(false);
   const [callerInfo, setCallerInfo] = useState<user>({ email: '', name: '' });
+  const { handleMouseDown, handleMouseMove, handleMouseUp, x, y } = useDrag(left, top);
 
   const uuid = useRef(uuidv4());
   const randomId = uuid.current.slice(0, 8);
@@ -50,13 +52,16 @@ const Message = ({ closeEvent, ...props }: MessageProps) => {
   }, [messages]);
 
   return (
-    <AppFrame {...props}>
+    <AppFrame {...props} top={y} left={x}>
       <MessageHeader
         {...props}
         redClick={closeEvent}
         callerInfo={callerInfo}
         setCallerInfo={setCallerInfo}
         randomId={randomId}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
       />
       <ContentWrapper ref={scrollRef}>
         <MessageContent messages={messages} loading={loading} />

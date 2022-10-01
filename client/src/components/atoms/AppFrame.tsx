@@ -8,11 +8,12 @@ export type AppFrameProps = {
   width: number;
   height: number;
   children?: React.ReactNode;
+  handleClick?: () => void;
 };
 
-const AppFrame = ({ children, ...props }: AppFrameProps) => {
+const AppFrame = ({ children, handleClick, ...props }: AppFrameProps) => {
   return (
-    <Wrapper {...props} draggable>
+    <Wrapper {...props} onMouseDownCapture={handleClick}>
       {children}
     </Wrapper>
   );
@@ -26,8 +27,8 @@ const Wrapper = styled.div<AppFrameProps>`
   border: 1px solid #fafafa38;
   border-radius: 12px;
   background-color: rgb(31, 31, 31);
-  top: ${props => props.top || 5}%;
-  left: ${props => props.left || 5}%;
+  top: ${props => props.top || 300}px;
+  left: ${props => props.left || 300}px;
   z-index: ${props => props.zIndex};
   display: ${props => (props.zIndex < 0 ? 'none' : 'block')};
   padding-bottom: 7vh;
