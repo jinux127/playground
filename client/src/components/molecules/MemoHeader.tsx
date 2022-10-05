@@ -6,7 +6,7 @@ import MemoMenu from './MemoMenu';
 import ThreeDot from './ThreeDot';
 
 type MemoHeaderProps = AppHeaderProps & {
-  redClick: () => void;
+  redClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
 };
 
 const MemoHeader = ({ redClick, ...props }: MemoHeaderProps) => {

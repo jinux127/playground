@@ -74,7 +74,9 @@ const Home = () => {
     }
   };
 
-  const handleCloseView = (key: string) => {
+  const handleCloseView = (e: React.MouseEvent<Element, MouseEvent>, key: string) => {
+    e.stopPropagation();
+
     const newViewList = viewList.filter(view => view !== key);
     setViewList([...newViewList]);
   };
@@ -100,7 +102,7 @@ const Home = () => {
         zIndex={viewList.indexOf(keys.Finder)}
         top={120}
         left={200}
-        redClick={() => handleCloseView(keys.Finder)}
+        redClick={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Finder)}
         finderData={finderData || []}
         height={30}
         width={50}
@@ -111,7 +113,7 @@ const Home = () => {
         zIndex={viewList.indexOf(keys.Memo)}
         top={130}
         left={250}
-        closeEvent={() => handleCloseView(keys.Memo)}
+        closeEvent={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Memo)}
         MemoContents={MemoArticles}
         height={35}
         width={50}
@@ -120,7 +122,9 @@ const Home = () => {
       {isFirstLanding >= 1 && (
         <Launchpad
           zIndex={viewList.indexOf(keys.Launchpad)}
-          closeEvent={() => handleCloseView(keys.Launchpad)}
+          closeEvent={(e: React.MouseEvent<Element, MouseEvent>) =>
+            handleCloseView(e, keys.Launchpad)
+          }
           LaunchpadContents={sampleData}
           isFirstLanding={isFirstLanding}
           setMacAlert={setMacAlert}
@@ -132,7 +136,7 @@ const Home = () => {
         left={300}
         height={35}
         width={50}
-        closeEvent={() => handleCloseView(keys.Message)}
+        closeEvent={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Message)}
         handleClick={() => handleViewList(keys.Message)}
       />
 
@@ -140,7 +144,7 @@ const Home = () => {
         zIndex={viewList.indexOf(keys.Trash)}
         top={130}
         left={280}
-        redClick={() => handleCloseView(keys.Trash)}
+        redClick={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Trash)}
         handleClick={() => handleViewList(keys.Trash)}
         finderData={[
           {

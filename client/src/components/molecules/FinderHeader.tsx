@@ -7,7 +7,7 @@ import LRArrow from './LRArrow';
 import ThreeDot from './ThreeDot';
 
 export type FinderHeaderProps = AppHeaderProps & {
-  redClick: () => void;
+  redClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
   title: string;
 };
 

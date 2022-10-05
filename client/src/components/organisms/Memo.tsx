@@ -8,7 +8,7 @@ import MemoContent from '../molecules/MemoContent';
 import MemoHeader from '../molecules/MemoHeader';
 
 export type FinderProps = AppFrameProps & {
-  closeEvent: () => void;
+  closeEvent: (e: React.MouseEvent<Element, MouseEvent>) => void;
   MemoContents: IMemo[];
 };
 

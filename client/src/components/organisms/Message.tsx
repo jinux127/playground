@@ -12,7 +12,7 @@ import AppFrame, { AppFrameProps } from '../atoms/AppFrame';
 import useDrag from '../../hooks/useDrag';
 
 export type MessageProps = AppFrameProps & {
-  closeEvent: () => void;
+  closeEvent: (e: React.MouseEvent<Element, MouseEvent>) => void;
 };
 
 export type user = { email: string; name: string };

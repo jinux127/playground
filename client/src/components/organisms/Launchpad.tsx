@@ -6,7 +6,7 @@ import Carousel from '../molecules/Carousel';
 
 export type LaunchpadProps = {
   zIndex: number;
-  closeEvent: () => void;
+  closeEvent: (e: React.MouseEvent<Element, MouseEvent>) => void;
   LaunchpadContents: any;
   isFirstLanding: number;
   setMacAlert: React.Dispatch<

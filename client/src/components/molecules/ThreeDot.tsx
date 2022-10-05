@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DotButton from '../atoms/DotButton';
 
 type ThreeDotProps = {
-  redClick: () => void;
+  redClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
   yellowClick?: () => void;
   greenClick?: () => void;
 };
@@ -12,7 +12,7 @@ type ThreeDotProps = {
 const ThreeDot = ({ redClick, yellowClick, greenClick }: ThreeDotProps) => {
   return (
     <DotWrapper>
-      <DotButton backgroundColor="rgb(202, 47, 47)" onClick={() => redClick()} />
+      <DotButton backgroundColor="rgb(202, 47, 47)" onClick={redClick} />
       <DotButton backgroundColor="rgb(202, 179, 47)" onClick={() => yellowClick} />
       <DotButton backgroundColor="rgb(132, 202, 47)" onClick={() => greenClick} />
     </DotWrapper>

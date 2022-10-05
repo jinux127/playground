@@ -6,7 +6,7 @@ import { user } from '../organisms/Message';
 import ThreeDot from './ThreeDot';
 
 type MessageHeaderProps = AppHeaderProps & {
-  redClick: () => void;
+  redClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
   title?: string;
   callerInfo: user;
   setCallerInfo: React.Dispatch<React.SetStateAction<user>>;
