@@ -2,7 +2,14 @@ import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { logo_boot_apple } from '../assets/images';
+import {
+  icon_bingsu,
+  icon_photocalendar,
+  icon_quarantine,
+  icon_sodong,
+  icon_togefit,
+  logo_boot_apple,
+} from '../assets/images';
 import { ProgressBar } from '../components/atoms';
 import {
   icon_chrome,
@@ -29,6 +36,11 @@ const Booting = () => {
   useEffect(() => {
     preload(
       [
+        icon_togefit,
+        icon_bingsu,
+        icon_sodong,
+        icon_photocalendar,
+        icon_quarantine,
         icon_chrome,
         icon_finder,
         icon_launchpad,
@@ -38,7 +50,7 @@ const Booting = () => {
         icon_vscode,
         background,
       ],
-      () => setCount(old => old + 10)
+      () => setCount(old => old + 6)
     );
 
     countInterval.current = setInterval(() => {
