@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React from 'react';
 
 import { useState } from 'react';
@@ -75,8 +73,6 @@ const Home = () => {
   };
 
   const handleCloseView = (e: React.MouseEvent<Element, MouseEvent>, key: string) => {
-    e.stopPropagation();
-
     const newViewList = viewList.filter(view => view !== key);
     setViewList([...newViewList]);
   };
@@ -108,6 +104,7 @@ const Home = () => {
         width={50}
         title="글 목록"
         handleClick={() => handleViewList(keys.Finder)}
+        setMacAlert={setMacAlert}
       />
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}

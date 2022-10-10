@@ -11,9 +11,17 @@ export type FinderProps = AppFrameProps &
   FinderHeaderProps & {
     finderData: IFinder[];
     title: string;
+    setMacAlert?: React.Dispatch<
+      React.SetStateAction<{
+        title: string;
+        url: string;
+        icon: string;
+        isView: boolean;
+      }>
+    >;
   };
 
-const Finder = ({ finderData = [], title, left, top, ...props }: FinderProps) => {
+const Finder = ({ finderData = [], title, left, top, setMacAlert, ...props }: FinderProps) => {
   const { handleMouseDown, handleMouseMove, handleMouseUp, x, y } = useDrag(left, top);
 
   return (
@@ -25,7 +33,7 @@ const Finder = ({ finderData = [], title, left, top, ...props }: FinderProps) =>
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       />
-      {finderData ? <FinderContent FinderContents={finderData} /> : ''}
+      {finderData ? <FinderContent FinderContents={finderData} setMacAlert={setMacAlert} /> : ''}
       <FinderFooter />
     </AppFrame>
   );

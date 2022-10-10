@@ -66,7 +66,6 @@ const Carousel = ({
               <ContentGridWrapper>
                 {PadIconInfo.map(iconInfo => {
                   return (
-                    // todo: alert 대신 커스텀 알림창으로 띄우고 프로젝트 이동
                     <GridItem onClick={e => handleAppClick(e, { ...iconInfo })} isView={isView}>
                       <img src={iconInfo.icon} alt={iconInfo.title} />
                       <span>{iconInfo.title}</span>

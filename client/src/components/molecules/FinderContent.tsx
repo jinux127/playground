@@ -1,13 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { icon_velog } from '../../assets/images';
 import { IFinder } from '../../types/interface';
 
 export interface IFinderContentProps {
   FinderContents: IFinder[];
+  setMacAlert?: React.Dispatch<
+    React.SetStateAction<{
+      title: string;
+      url: string;
+      icon: string;
+      isView: boolean;
+    }>
+  >;
 }
 
 const FinderContent = (props: IFinderContentProps) => {
-  const { FinderContents } = props;
+  const { FinderContents, setMacAlert } = props;
+
+  const handleAppClick = (
+    e: React.MouseEvent,
+    props: { icon: string; title: string; url: string }
+  ) => {
+    if (!setMacAlert) return;
+
+    setMacAlert({ ...props, isView: true });
+  };
 
   return (
     <Wrapper>
@@ -29,7 +47,12 @@ const FinderContent = (props: IFinderContentProps) => {
             return (
               // 임시 블로그로 이동하기
               // todo : 새창으로 열기 경고창 혹은 iframe 같은 걸로 안에 창 띄우기
-              <tr key={i} onClick={() => (window.location.href = `${content.href}`)}>
+              <tr
+                key={i}
+                onClick={e =>
+                  handleAppClick(e, { icon: icon_velog, title: content.title, url: content.href })
+                }
+              >
                 <td>{content.title}</td>
                 <td>{content.desc}</td>
                 <td>{content.date}</td>
