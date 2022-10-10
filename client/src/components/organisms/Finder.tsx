@@ -34,7 +34,7 @@ const Finder = ({ finderData = [], title, left, top, setMacAlert, ...props }: Fi
         onMouseUp={handleMouseUp}
       />
       {finderData ? <FinderContent FinderContents={finderData} setMacAlert={setMacAlert} /> : ''}
-      <FinderFooter />
+      <FinderFooter count={finderData.length} />
     </AppFrame>
   );
 };

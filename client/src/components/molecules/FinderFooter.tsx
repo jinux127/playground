@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FinderFooter = () => {
+type FinderFooterProps = {
+  count: number;
+};
+
+const FinderFooter = (props: FinderFooterProps) => {
   return (
     <Wrapper>
-      <div>1/142 선택됨</div>
+      <div>{props.count}개의 항목</div>
     </Wrapper>
   );
 };
