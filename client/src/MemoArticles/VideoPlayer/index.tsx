@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import UploadAndPlayer from './components/UploadAndPlayer';
 
 const VideoPlayer = () => {
   return (
     <Wrapper>
-      <video controls width="500">
-        <source src="/media/cc0-videos/flower.webm" type="video/webm"></source>
-      </video>
+      <UploadAndPlayer />
     </Wrapper>
   );
 };
