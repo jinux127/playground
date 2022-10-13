@@ -128,7 +128,7 @@ const ControlBarWrapper = styled.div<{ showControl: boolean }>`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   width: 100%;
   height: 55px;
   z-index: 9999;
@@ -141,14 +141,14 @@ const ControlBarWrapper = styled.div<{ showControl: boolean }>`
   @media (max-width: 320px) {
     padding: 0px 4px;
   }
-  & .progressBar {
+  /* & .progressBar {
     margin-left: 4px;
     display: inline-block;
   }
 
   & .endTime {
     margin-left: 4px;
-  }
+  } */
 `;
 
 export default Controlbar;
