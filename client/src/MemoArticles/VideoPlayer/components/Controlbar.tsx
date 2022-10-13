@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { pauseIcon, muteIcon, playIcon, volumeIcon } from '../assets/images';
+import { pauseIcon, muteIcon, playIcon, volumeIcon, fullscreenIcon } from '../assets/images';
 import ProgressBar from './ProgressBar';
 import { toTimeString } from '../utils';
 
@@ -57,6 +57,12 @@ const Controlbar = ({
     }
   };
 
+  const handleFullScreen = () => {
+    if (videoElement) {
+      videoElement.requestFullscreen();
+    }
+  };
+
   return (
     <>
       <ControlBarWrapper showControl={showControl}>
@@ -71,6 +77,7 @@ const Controlbar = ({
           {toTimeString(startTime)} / {toTimeString(totalTime)}
         </TimeText>
         <Volume src={volumeClicked ? volumeIcon : muteIcon} onClick={handleVolume} />
+        <Volume src={fullscreenIcon} onClick={handleFullScreen} />
       </ControlBarWrapper>
       <PlayControl showControl={showControl}>
         <PlayBg onClick={onPlayIconClick}>
@@ -84,7 +91,7 @@ const Controlbar = ({
 const Volume = styled.img`
   width: 20px;
   height: 20px;
-  margin-left: 4px;
+  margin: 0 4px;
 `;
 
 const PlayBg = styled.div`

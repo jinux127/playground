@@ -34,9 +34,9 @@ const Video = ({ videoSrc }: IProps) => {
 
   // progress 이동시켰을때 실행되는 함수
   const onProgressChange = (percent: number) => {
-    if (videoElement) {
+    if (videoElement && ref.current) {
       const playingTime = videoElement.duration * (percent / 100);
-
+      ref.current.currentTime = playingTime;
       setCurrentTime(playingTime);
     }
   };
@@ -64,7 +64,7 @@ const Video = ({ videoSrc }: IProps) => {
       onMouseOver={() => handleControlVisible(true)}
       onMouseOut={() => handleControlVisible(false)}
     >
-      <video loop={true} muted={true} ref={ref} playsInline={true}>
+      <video muted={true} ref={ref} playsInline={true}>
         <source
           src="https://storage.googleapis.com/web-dev-assets/video-and-source-tags/chrome.webm"
           type="video/webm"
