@@ -36,6 +36,7 @@ const Wrapper = styled.div`
   height: 3px;
   background-color: gray;
   border-radius: 1.5px;
+  position: relative;
 `;
 
 const Controller = styled.input`
@@ -58,7 +59,6 @@ const Controller = styled.input`
 `;
 
 const Bar = styled.div`
-  position: relative;
   height: 3px;
   background-color: white;
   border-radius: 1.5px;

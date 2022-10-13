@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { pauseIcon, muteIcon, playIcon, volumeIcon } from '../assets/images';
 import ProgressBar from './ProgressBar';
+import { toTimeString } from '../utils';
 
 interface IProps {
   onProgressChange: (percent: number) => void;
@@ -59,7 +60,6 @@ const Controlbar = ({
   return (
     <>
       <ControlBarWrapper showControl={showControl}>
-        <TimeText>{startTime}</TimeText>
         <ProgressBar
           max={totalTime}
           value={currentTime}
@@ -67,12 +67,14 @@ const Controlbar = ({
           onMouseDown={onMouseDown}
           onMouseUp={onMouseUp}
         />
-        <TimeText>{totalTime}</TimeText>
+        <TimeText>
+          {toTimeString(startTime)} / {toTimeString(totalTime)}
+        </TimeText>
         <Volume src={volumeClicked ? volumeIcon : muteIcon} onClick={handleVolume} />
       </ControlBarWrapper>
       <PlayControl showControl={showControl}>
-        <PlayBg>
-          <PlayIcon src={nowPlaying ? pauseIcon : playIcon} onClick={onPlayIconClick} />
+        <PlayBg onClick={onPlayIconClick}>
+          <PlayIcon src={nowPlaying ? pauseIcon : playIcon} />
         </PlayBg>
       </PlayControl>
     </>
@@ -118,9 +120,11 @@ const PlayControl = styled.div<{ showControl: boolean }>`
 `;
 
 const TimeText = styled.span`
-  width: 35px;
   color: white;
   font-size: 14px;
+  width: 200px;
+  padding: 0 14px;
+  text-align: center;
 `;
 
 const ControlBarWrapper = styled.div<{ showControl: boolean }>`
@@ -141,14 +145,6 @@ const ControlBarWrapper = styled.div<{ showControl: boolean }>`
   @media (max-width: 320px) {
     padding: 0px 4px;
   }
-  /* & .progressBar {
-    margin-left: 4px;
-    display: inline-block;
-  }
-
-  & .endTime {
-    margin-left: 4px;
-  } */
 `;
 
 export default Controlbar;

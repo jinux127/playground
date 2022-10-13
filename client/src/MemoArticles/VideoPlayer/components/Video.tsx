@@ -13,7 +13,7 @@ const Video = ({ videoSrc }: IProps) => {
 
   const ref = useRef<HTMLVideoElement>(null);
 
-  const totalTime = (ref && ref.current && ref.current.duration) || 0;
+  const totalTime = Math.round((ref && ref.current && ref.current.duration) ?? 0);
   const videoElement = ref && ref.current;
 
   const startTime = Math.floor(currentTime);
@@ -25,8 +25,6 @@ const Video = ({ videoSrc }: IProps) => {
       observedVideoElement.addEventListener('timeupdate', function () {
         setCurrentTime(observedVideoElement.currentTime);
       });
-      setNowPlaying(true);
-      observedVideoElement.play();
     }
   };
 
@@ -36,10 +34,6 @@ const Video = ({ videoSrc }: IProps) => {
 
   // progress 이동시켰을때 실행되는 함수
   const onProgressChange = (percent: number) => {
-    if (!showControl) {
-      setShowControl(true);
-    }
-
     if (videoElement) {
       const playingTime = videoElement.duration * (percent / 100);
 
