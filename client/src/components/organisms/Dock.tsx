@@ -3,13 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { Line } from '../atoms';
 import {
-  icon_chrome,
+  // icon_chrome,
   icon_finder,
   icon_launchpad,
   icon_memo,
   icon_message,
   icon_trash,
-  icon_vscode,
+  // icon_vscode,
 } from '../../assets/images';
 import IconWithTooltip from '../molecules/IconWithTooltip';
 import { keys } from '../../constants/keys';
@@ -42,14 +42,15 @@ const Dock = (props: DockProps) => {
           setIsFirstLanding(cur => cur + 1);
         }}
       />
-      <IconWithTooltip
+      {/* 임시: 아직 구현안됨 크롬 */}
+      {/* <IconWithTooltip
         backgroundImage={icon_chrome}
         height={70}
         width={70}
         margin={'0 5px'}
         content={'Chrome'}
         onClick={() => handleViewList(keys.Chrome)}
-      />
+      /> */}
       <IconWithTooltip
         backgroundImage={icon_memo}
         height={60}
@@ -66,14 +67,15 @@ const Dock = (props: DockProps) => {
         content={'메시지'}
         onClick={() => handleViewList(keys.Message)}
       />
-      <IconWithTooltip
+      {/* 임시 아직 구현안됨 vscode  */}
+      {/* <IconWithTooltip
         backgroundImage={icon_vscode}
         height={70}
         width={70}
         margin={'0 5px'}
         content={'Visual Studio Code'}
         onClick={() => handleViewList(keys.Vscode)}
-      />
+      /> */}
       <Line />
       <IconWithTooltip
         backgroundImage={icon_trash}

@@ -22,7 +22,7 @@ const Trash = ({ closeEvent, ...props }: FinderProps) => {
     <Wrapper {...props}>
       <FinderHeader {...props} redClick={closeEvent} title={'휴지통'} />
       <FinderContent FinderContents={content} />
-      <FinderFooter />
+      <FinderFooter count={content.length} />
     </Wrapper>
   );
 };

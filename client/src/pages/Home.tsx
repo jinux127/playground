@@ -145,8 +145,22 @@ const Home = () => {
         handleClick={() => handleViewList(keys.Trash)}
         finderData={[
           {
-            title: '임시 기능입니다.',
-            date: '2022년 09월 25일',
+            title: '나태',
+            date: '2022년 10월 20일',
+            desc: '임시',
+            href: '',
+            likes: '',
+          },
+          {
+            title: '시기',
+            date: '2022년 10월 20일',
+            desc: '임시',
+            href: '',
+            likes: '',
+          },
+          {
+            title: '자만',
+            date: '2022년 10월 20일',
             desc: '임시',
             href: '',
             likes: '',
