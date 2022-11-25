@@ -7,7 +7,6 @@ import Carousel from '../molecules/Carousel';
 export type LaunchpadProps = {
   zIndex: number;
   closeEvent: (e: React.MouseEvent<Element, MouseEvent>) => void;
-  LaunchpadContents: any;
   isFirstLanding: number;
   setMacAlert: React.Dispatch<
     React.SetStateAction<{
@@ -19,7 +18,7 @@ export type LaunchpadProps = {
   >;
 };
 
-const Launchpad = ({ closeEvent, LaunchpadContents, setMacAlert, ...props }: LaunchpadProps) => {
+const Launchpad = ({ closeEvent, setMacAlert, ...props }: LaunchpadProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [count] = useState(1);
 
@@ -37,7 +36,6 @@ const Launchpad = ({ closeEvent, LaunchpadContents, setMacAlert, ...props }: Lau
     <Wrapper {...props} onClick={closeEvent}>
       <CarouselWrapper {...props}>
         <Carousel
-          carouselList={LaunchpadContents}
           carouselRef={carouselRef}
           count={count}
           handleCarousel={handleCarousel}

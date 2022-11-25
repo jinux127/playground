@@ -3,15 +3,7 @@ import styled from 'styled-components';
 
 import PadIconInfo from '../../PadIconInfo';
 
-const Carousel = ({
-  count,
-  carouselList,
-  carouselRef,
-  handleCarousel,
-  isView,
-  setMacAlert,
-  closeEvent,
-}) => {
+const Carousel = ({ count, carouselRef, handleCarousel, isView, setMacAlert, closeEvent }) => {
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
     marginLeft: `-${current}00%`,

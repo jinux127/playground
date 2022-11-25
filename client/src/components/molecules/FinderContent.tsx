@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { icon_velog } from '../../assets/images';
+import useOutSideClick from '../../hooks/useOutSideClick';
 import { IFinder } from '../../types/interface';
 
 export interface IFinderContentProps {
@@ -17,6 +18,10 @@ export interface IFinderContentProps {
 
 const FinderContent = (props: IFinderContentProps) => {
   const { FinderContents, setMacAlert } = props;
+  const [clickedIndex, setClickedIndex] = useState(-1);
+  const { focusRef } = useOutSideClick<HTMLTableSectionElement>({
+    outSideCallback: () => setClickedIndex(-1),
+  });
 
   const handleAppClick = (
     e: React.MouseEvent,
@@ -42,16 +47,18 @@ const FinderContent = (props: IFinderContentProps) => {
             <th>최근 사용일</th>
           </tr>
         </TableThead>
-        <tbody>
+        <tbody ref={focusRef}>
           {FinderContents.map((content, i) => {
             return (
               // 임시 블로그로 이동하기
               // todo : 새창으로 열기 경고창 혹은 iframe 같은 걸로 안에 창 띄우기
               <tr
                 key={i}
-                onClick={e =>
+                onDoubleClick={e =>
                   handleAppClick(e, { icon: icon_velog, title: content.title, url: content.href })
                 }
+                onClick={e => setClickedIndex(i)}
+                style={clickedIndex === i ? { background: 'rgba(255, 255, 255, 0.2)' } : {}}
               >
                 <td>{content.title}</td>
                 <td>{content.desc}</td>
@@ -87,7 +94,7 @@ const Table = styled.table`
       background-color: rgba(0, 0, 0, 0.2);
     }
     tr:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
     }
     td {
       padding: 0.2rem;
