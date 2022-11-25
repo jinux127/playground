@@ -5,11 +5,12 @@ const useFinderData = () => {
     queryKey: ['useFinderData'],
     queryFn: () => getFinderData(),
     keepPreviousData: true,
+    staleTime: 5000,
     onError(err: any) {
       // console.log(err);
     },
     onSuccess(data) {
-      // console.log(data.statusCode);
+      // console.log(data);
     },
   });
   return { isError, isLoading, error, data };

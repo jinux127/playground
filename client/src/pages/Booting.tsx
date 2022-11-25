@@ -20,12 +20,14 @@ import {
   background,
 } from '../assets/images';
 import useLoading from '../hooks/useLoading';
+import useFinderData from '../hooks/useFinderData';
 
 type LogoProps = {
   src: string;
 };
 
 const Booting = () => {
+  const { isLoading } = useFinderData();
   const { count } = useLoading({
     loadFiles: [
       logo_boot_apple,
@@ -43,6 +45,7 @@ const Booting = () => {
       icon_vscode,
       background,
     ],
+    isLoading,
   });
 
   return (

@@ -6,22 +6,25 @@ interface IuseLoadingProps {
   loadFiles: any[] | string;
   countDistance?: number;
   ms?: number;
+  callApi?: any[];
+  isLoading?: boolean;
 }
 const useLoading = ({
   initialCount = 10,
   loadFiles,
   countDistance = 5,
   ms = 150,
+  isLoading = false,
 }: IuseLoadingProps) => {
   const navigate = useNavigate();
   const [count, setCount] = useState(initialCount);
   const countInterval = useRef<any>(null);
-
   useEffect(() => {
     preload(loadFiles, () => setCount(old => old + countDistance));
 
     countInterval.current = setInterval(() => {
-      setCount(old => old + 1);
+      if (count < 100) setCount(old => old + 1);
+      else if (!isLoading) setCount(old => old + 1);
     }, ms);
 
     return () => {

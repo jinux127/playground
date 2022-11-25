@@ -23,6 +23,5 @@ export interface IMemo {
 }
 
 export interface IapiResponse {
-  statusCode: number;
-  responseMessage: string;
+  status: number;
 }
