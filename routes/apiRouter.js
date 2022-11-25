@@ -31,7 +31,7 @@ apiRouter.post('/mail', async function (req, res, next) {
     },
   });
   const { contents, email, name } = req.body;
-  console.log(email);
+
   const mailOptions = {
     from: `Jinux's playground <${email}>`,
     to: process.env.TARGET_EMAIL,
