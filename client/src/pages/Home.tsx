@@ -5,14 +5,15 @@ import styled from 'styled-components';
 import { keys } from '../constants/keys';
 import Dock from '../components/organisms/Dock';
 import Finder from '../components/organisms/Finder';
-import { IFinder } from '../types/interface';
 import Memo from '../components/organisms/Memo';
 
 import MemoArticles from '../MemoArticles';
-import useInterval from '../hooks/useInterval';
 import Launchpad from '../components/organisms/Launchpad';
 import Message from '../components/organisms/Message';
 import MacAlert from '../components/molecules/MacAlert';
+import useView from '../hooks/useView';
+import useFinderData from '../hooks/useFinderData';
+import useMacAlert from '../hooks/useMacAlert';
 
 const sampleData = [
   {
@@ -47,50 +48,12 @@ const sampleData = [
   },
 ];
 
-const LAUNCHPAD = keys.Launchpad;
-
 const Home = () => {
-  const [viewList, setViewList] = useState<string[]>([]);
-  const [finderData, setFinderData] = useState<IFinder[]>([]);
+  const { handleCloseView, handleViewList, viewList } = useView();
+  const { handleCloseAlert, macAlert, setMacAlert } = useMacAlert();
+  const { data: finderData } = useFinderData();
 
   const [isFirstLanding, setIsFirstLanding] = useState(0);
-  const [macAlert, setMacAlert] = useState({ title: '', url: '', icon: '', isView: false });
-
-  const handleViewList = (key: string) => {
-    const newViewList = viewList.filter(view => view !== key);
-
-    const isViewLaunchpadAndClickLaunchpad = viewList.includes(LAUNCHPAD) && key === LAUNCHPAD;
-    const isViewLaunchpadAndClickOther = viewList.includes(LAUNCHPAD) && key !== LAUNCHPAD;
-
-    if (isViewLaunchpadAndClickLaunchpad) {
-      setViewList([...newViewList]);
-    } else if (isViewLaunchpadAndClickOther) {
-      const newViewList = viewList.filter(view => view !== key && view !== LAUNCHPAD);
-      setViewList([...newViewList, key]);
-    } else {
-      setViewList([...newViewList, key]);
-    }
-  };
-
-  const handleCloseView = (e: React.MouseEvent<Element, MouseEvent>, key: string) => {
-    const newViewList = viewList.filter(view => view !== key);
-    setViewList([...newViewList]);
-  };
-
-  const getFinderData = async () => {
-    const res = await fetch('api/data');
-    const json = await res.json();
-    const finderData = json.data;
-    setFinderData(finderData);
-  };
-
-  useInterval(() => {
-    if (!finderData.length) getFinderData();
-  }, 1000);
-
-  const handleCloseAlert = () => {
-    setMacAlert(cur => ({ ...cur, isView: false }));
-  };
 
   return (
     <Wrapper>
@@ -99,7 +62,7 @@ const Home = () => {
         top={120}
         left={200}
         redClick={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Finder)}
-        finderData={finderData || []}
+        finderData={finderData?.data}
         height={30}
         width={50}
         title="글 목록"

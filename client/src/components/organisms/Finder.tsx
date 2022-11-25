@@ -9,7 +9,7 @@ import { FinderHeaderProps } from '../molecules/FinderHeader';
 
 export type FinderProps = AppFrameProps &
   FinderHeaderProps & {
-    finderData: IFinder[];
+    finderData?: IFinder[];
     title: string;
     setMacAlert?: React.Dispatch<
       React.SetStateAction<{

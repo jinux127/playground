@@ -64,9 +64,13 @@ const Carousel = ({
           <FlexBox style={style}>
             <CarouselItem>
               <ContentGridWrapper>
-                {PadIconInfo.map(iconInfo => {
+                {PadIconInfo.map((iconInfo, i) => {
                   return (
-                    <GridItem onClick={e => handleAppClick(e, { ...iconInfo })} isView={isView}>
+                    <GridItem
+                      key={i}
+                      onClick={e => handleAppClick(e, { ...iconInfo })}
+                      isView={isView}
+                    >
                       <img src={iconInfo.icon} alt={iconInfo.title} />
                       <span>{iconInfo.title}</span>
                     </GridItem>

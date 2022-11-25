@@ -21,3 +21,8 @@ export interface IMemo {
   date: string;
   content: React.ReactNode;
 }
+
+export interface IapiResponse {
+  statusCode: number;
+  responseMessage: string;
+}
