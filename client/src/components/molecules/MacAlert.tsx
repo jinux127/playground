@@ -101,9 +101,9 @@ const Wrapper = styled.div<{ isView: boolean }>`
   height: 4rem;
   position: fixed;
   width: 20rem;
-  right: ${props => (props.isView ? '0' : '-20')}rem;
+  right: ${props => (props.isView ? '0' : '-25')}rem;
   margin: 1rem;
-  opacity: ${props => (props.isView ? '1' : '0')};
+  /* opacity: ${props => (props.isView ? '1' : '0')}; */
   transition: right 0.2s cubic-bezier(0.3, 0.5, 0.5, 1);
 
   border: 1px solid #fafafa38;
