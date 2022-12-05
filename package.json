@@ -9,7 +9,10 @@
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "npm start",
     "dev:client": "cd client && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "deploy:install": "npm install && cd client && npm install",
+    "deploy:build": "cd client && npm run build",
+    "deploy:start": "concurrently \"npm run dev:server\" \"npm run dev:client\""
   },
   "keywords": [],
   "author": "",
