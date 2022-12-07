@@ -50,8 +50,6 @@ const FinderContent = (props: IFinderContentProps) => {
         <tbody ref={focusRef}>
           {FinderContents.map((content, i) => {
             return (
-              // 임시 블로그로 이동하기
-              // todo : 새창으로 열기 경고창 혹은 iframe 같은 걸로 안에 창 띄우기
               <tr
                 key={i}
                 onDoubleClick={e =>
@@ -106,6 +104,16 @@ const Table = styled.table`
 const Wrapper = styled.div`
   height: 94%;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    /* border-radius: 6px; */
+    background: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+  }
 `;
 
 export default FinderContent;
