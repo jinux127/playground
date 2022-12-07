@@ -81,12 +81,11 @@ const fadeIn = keyframes`
 
 const Wrapper = styled.div<{
   zIndex: number;
-
   isFirstLanding: number;
 }>`
   display: flex;
-  position: absolute;
-
+  position: fixed;
+  overflow: hidden;
   ::before {
     position: fixed;
     top: 0;
