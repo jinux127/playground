@@ -22,6 +22,7 @@ const Home = () => {
 
   const [isFirstLanding, setIsFirstLanding] = useState(0);
 
+  window.addEventListener('beforeunload', function (e) {});
   return (
     <Wrapper>
       <Finder
