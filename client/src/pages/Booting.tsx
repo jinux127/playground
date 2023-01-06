@@ -7,9 +7,6 @@ import {
   icon_sodong,
   icon_togefit,
   logo_boot_apple,
-} from '../assets/images';
-import { ProgressBar } from '../components/atoms';
-import {
   icon_chrome,
   icon_finder,
   icon_launchpad,
@@ -19,6 +16,7 @@ import {
   icon_vscode,
   background,
 } from '../assets/images';
+import { ProgressBar } from '../components/atoms';
 import useLoading from '../hooks/useLoading';
 import useFinderData from '../hooks/useFinderData';
 

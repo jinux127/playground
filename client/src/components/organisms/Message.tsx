@@ -74,6 +74,15 @@ const Message = ({ closeEvent, left, top, ...props }: MessageProps) => {
 const ContentWrapper = styled.div`
   height: 90%;
   overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+  }
   padding: 2px;
 `;
 

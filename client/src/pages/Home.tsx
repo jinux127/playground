@@ -28,7 +28,7 @@ const Home = () => {
       <Finder
         zIndex={viewList.indexOf(keys.Finder)}
         top={120}
-        left={200}
+        left={100}
         redClick={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Finder)}
         finderData={finderData?.data}
         height={30}
@@ -40,7 +40,7 @@ const Home = () => {
       <Memo
         zIndex={viewList.indexOf(keys.Memo)}
         top={130}
-        left={250}
+        left={150}
         closeEvent={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Memo)}
         MemoContents={MemoArticles}
         height={35}
@@ -60,7 +60,7 @@ const Home = () => {
       <Message
         zIndex={viewList.indexOf(keys.Message)}
         top={140}
-        left={300}
+        left={100}
         height={35}
         width={50}
         closeEvent={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Message)}
@@ -70,7 +70,7 @@ const Home = () => {
       <Finder
         zIndex={viewList.indexOf(keys.Trash)}
         top={130}
-        left={280}
+        left={180}
         redClick={(e: React.MouseEvent<Element, MouseEvent>) => handleCloseView(e, keys.Trash)}
         handleClick={() => handleViewList(keys.Trash)}
         finderData={[

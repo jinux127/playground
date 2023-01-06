@@ -48,7 +48,6 @@ const Wrapper = styled.div`
   padding: 5px 20px;
   justify-content: center;
   display: flex;
-  margin: 10px 0;
   textarea {
     padding: 6px 10px;
     border: 0.1px solid #939393;

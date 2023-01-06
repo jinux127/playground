@@ -57,6 +57,15 @@ const Content = styled.div`
   height: 100%;
   margin-right: 1px;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+  }
 `;
 const List = styled.div`
   width: 40%;
@@ -64,7 +73,15 @@ const List = styled.div`
   background-color: #333333;
   height: 100%;
   border-radius: 0px 0px 0px 12px;
-
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+  }
   ul {
     padding: 0 0.5rem;
   }

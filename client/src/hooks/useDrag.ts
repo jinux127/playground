@@ -9,8 +9,7 @@ const useDrag = (left: number, top: number) => {
 
   const handleMouseDown = (e: React.MouseEvent<Element, MouseEvent>) => {
     const target = e.target as HTMLElement;
-    if (target.getBoundingClientRect().width <= 700) return;
-
+    if (target.getBoundingClientRect().width <= 100) return;
     setShiftX(e.clientX - target.getBoundingClientRect().left);
     setShiftY(e.clientY - target.getBoundingClientRect().top);
     setIsKeyDown(true);

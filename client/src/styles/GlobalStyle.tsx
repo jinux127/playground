@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
-
+  html{
+    font-size: 2vh;
+  }
   *, *::before, *::after {
     box-sizing: border-box;
   }
